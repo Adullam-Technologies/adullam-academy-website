@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the official website for Adullam Academy, a Christian coding and innovation school for kids ages 8-18. The site is built with **Astro** and **Tailwind CSS v4**, featuring a modern SaaS-inspired design with rich animations.
+This is the official website for Adullam Academy, a Christian coding and innovation school for kids ages 8-16. The site is built with **Astro** and **Tailwind CSS v4**, featuring a modern SaaS-inspired design with rich animations.
 
 ---
 

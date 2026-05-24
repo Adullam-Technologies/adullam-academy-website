@@ -4,7 +4,7 @@ Empowering the next generation of Kingdom visionaries to create.
 
 ## Excerpt
 
-> Adullam Academy is a technocentric school of innovation that teaches kids and teenagers aged 8-18 how to build apps and AI-powered solutions with the aim of raising a generation of Kingdom-first tech leaders.
+> Adullam Academy is a technocentric school of innovation that teaches kids and teenagers aged 8-16 how to build apps and AI-powered solutions with the aim of raising a generation of Kingdom-first tech leaders.
 > 
 
 ## Mission
