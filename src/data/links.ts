@@ -1,1 +1,1 @@
-export const REGISTER_LINK = "https://aduaca.fillout.com/join-online";
+export const REGISTER_LINK = "https://go.aduaca.com/enrol";
