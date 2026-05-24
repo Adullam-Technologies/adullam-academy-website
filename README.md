@@ -1,6 +1,6 @@
 # Adullam Academy Website
 
-Official repository for [Adullam Academy](https://adullamacademy.com), a faith-centered coding bootcamp for kids ages 8-18. The site is built with **Astro 5** and **Tailwind CSS v4**, deploys to GitHub Pages, and sources rich content from Astro Content Collections.
+Official repository for [Adullam Academy](https://adullamacademy.com), a faith-centered coding bootcamp for kids ages 8-16. The site is built with **Astro 5** and **Tailwind CSS v4**, deploys to GitHub Pages, and sources rich content from Astro Content Collections.
 
 ## Stack
 

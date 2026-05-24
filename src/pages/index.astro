@@ -1,15 +1,6 @@
 ---
 /**
- * Homepage
- * 
- * The main landing page for Adullam Academy featuring:
- * - Hero section with animated background
- * - "What is Adullam Academy?" introduction
- * - "Our Approach" feature cards
- * - Testimonials section
- * - Call-to-action banner
- * 
- * Content is pulled from markdown files and content collections.
+ * Homepage - Redesigned for Adullam Academy: School of Innovation
  */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -29,129 +20,132 @@ const testimonials = await getCollection('testimonials', ({ data }) => {
 // Sort by order
 const sortedTestimonials = testimonials.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
-// Our Approach data
-const approachItems = [
+// The Adullam Method - Focused on Effectiveness & Safety
+const methodology = [
   {
     number: 1,
-    title: "Learn by Building",
-    description: "Students don't just consume—they create. Each 8-week bootcamp mixes asynchronous build time with weekend stand-ups so teams can ship real solutions with industry-standard tools.",
+    title: "Guided Discovery (The Eureka Agent)",
+    description: "Our proprietary AI doesn't just give answers, it acts as a Socratic tutor, asking the right questions to lead your child to their own 'Eureka!' moment.",
   },
   {
     number: 2,
-    title: "Spirit-Led Innovation",
-    description: "Every session begins with prayer and ends with a \"Wisdom Cache\" rooted in Scripture—grounding creativity in God's Word.",
+    title: "Safety-First Innovation",
+    description: "We've engineered an AI Studio that is rigorously filtered and strictly profane-free, ensuring a safe frontier for spiritual and technical exploration.",
   },
   {
     number: 3,
-    title: "Team-Centred Projects",
-    description: "Students work in small groups to brainstorm, design, and develop a solution to a real-world problem—building collaboration and leadership skills.",
+    title: "Professional-Grade Tools",
+    description: "Students build in a custom-engineered LMS with an integrated code editor, learning to ship real software using industry-standard logic.",
   },
   {
     number: 4,
-    title: "Designed for Real Impact",
-    description: "Our bootcamps are structured, focused, and age-appropriate. Students leave with a working prototype, new technical skills, and a renewed sense of purpose.",
+    title: "Kingdom-First Leadership",
+    description: "Technical skill is useless without character. Every innovation is grounded in Scripture, raising leaders who are as spiritually firm as they are technically effective.",
   },
 ];
 ---
 
 <BaseLayout 
-  title="Raising Kingdom Visionaries"
-  description="Adullam Academy is a technocentric school of innovation that teaches kids and teenagers aged 8-18 how to build apps and AI-powered solutions with the aim of raising a generation of Kingdom-first tech leaders."
+  title="The School of Innovation"
+  description="Equipping the next generation of Kingdom-first leaders with the tools of innovation, AI engineering, and spiritual effectiveness."
 >
   <!-- Hero Section -->
   <Hero 
-    headline="Raising Kingdom Visionaries"
-    subtext="Equipping the next generation of innovators to build real-world solutions, rooted in God's wisdom and powered by code."
-    primaryCTA="Register Now"
+    headline="Equipping the Next Generation of Innovation Leaders"
+    subtext="Adullam Academy is more than a coding school. We are a preparation ground for effectiveness in the new age, where your child masters proprietary AI tools and Kingdom leadership."
+    primaryCTA="Enrol Your Child"
     primaryLink={REGISTER_LINK}
-    secondaryCTA="Learn More"
-    secondaryLink="/bootcamp"
+    secondaryCTA="Watch the Vision"
+    secondaryLink="#vision"
   />
 
-  <!-- What is Adullam Academy Section -->
-  <section id="about" class="py-24 lg:py-32 bg-cream relative">
-    <!-- Wave divider at top -->
-    <div class="section-divider-wave-top">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-navy-900">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-      </svg>
-    </div>
+  <!-- The "Vision" Video Section (Hidden until video is ready) -->
+  {/*
+  <section id="vision" class="py-24 lg:py-32 bg-white relative overflow-hidden">
+    ...
+  </section>
+  */}
+
+  <!-- The Innovation Lab (Moat Showcase) -->
+  <section class="py-24 lg:py-32 bg-cream relative">
     <div class="container mx-auto px-4 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <SectionHeader 
-          eyebrow="Welcome"
-          title="What is Adullam Academy?"
-        />
-        
-        <p class="text-xl lg:text-2xl text-navy-700 leading-relaxed animate-on-scroll">
-          Adullam Academy is a <span class="text-gold-600 font-semibold">technocentric school of innovation</span> that teaches kids and teenagers aged 8-18 how to build apps and AI-powered solutions with the aim of raising a generation of <span class="text-gold-600 font-semibold">Kingdom-first tech leaders</span>.
-        </p>
+      <SectionHeader 
+        eyebrow="The Adullam Method"
+        title="Our Proprietary Innovation Lab"
+        description="We don't use off-the-shelf tools. We've built a custom ecosystem where technical rigor meets spiritual safety."
+      />
 
-        <!-- Key differentiators -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          <div class="group relative p-6 rounded-xl bg-white shadow-soft border border-navy-100/30 animate-on-scroll card-hover overflow-hidden" style="animation-delay: 0.1s;">
-            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-linear-to-br from-gold-500/20 to-gold-300/5 flex items-center justify-center">
-              <svg class="w-7 h-7 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-navy-900 mb-2">Real Skills</h3>
-            <p class="text-navy-600/80 text-sm">Industry-standard tools and practices used by professional developers</p>
-            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      <div class="mt-20 space-y-32">
+        <!-- Feature 1: The LMS -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="animate-on-scroll-left">
+            <h3 class="text-3xl font-extrabold text-navy-900 mb-6">A Tailored Learning Management System</h3>
+            <p class="text-lg text-navy-700 leading-relaxed mb-8">
+              Your child's progress is tracked in a professional-grade dashboard designed for focus. From interactive lessons to an integrated code editor, every tool is engineered to build technical effectiveness.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-navy-600">
+                <svg class="w-6 h-6 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Integrated Code Editor for instant feedback</span>
+              </li>
+              <li class="flex items-start gap-3 text-navy-600">
+                <svg class="w-6 h-6 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Gamified progress and skill tracking</span>
+              </li>
+            </ul>
           </div>
-
-          <div class="group relative p-6 rounded-xl bg-white shadow-soft border border-navy-100/30 animate-on-scroll card-hover overflow-hidden" style="animation-delay: 0.2s;">
-            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-linear-to-br from-gold-500/20 to-gold-300/5 flex items-center justify-center">
-              <svg class="w-7 h-7 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
+          <div class="animate-on-scroll-right">
+            <div class="relative group">
+              <div class="absolute -inset-4 bg-linear-to-br from-gold-500/20 to-navy-500/10 rounded-3xl blur-2xl group-hover:opacity-75 transition duration-500"></div>
+              <img src="/images/software/lms/dashboard.png" alt="Adullam LMS Dashboard" class="relative rounded-2xl shadow-2xl border border-navy-100/50" />
             </div>
-            <h3 class="text-lg font-bold text-navy-900 mb-2">Faith Integration</h3>
-            <p class="text-navy-600/80 text-sm">Scripture and prayer woven into every session and project</p>
-            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
+        </div>
 
-          <div class="group relative p-6 rounded-xl bg-white shadow-soft border border-navy-100/30 animate-on-scroll card-hover overflow-hidden" style="animation-delay: 0.3s;">
-            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-linear-to-br from-gold-500/20 to-gold-300/5 flex items-center justify-center">
-              <svg class="w-7 h-7 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
+        <!-- Feature 2: AI Studio -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1 animate-on-scroll-left">
+            <div class="relative group">
+              <div class="absolute -inset-4 bg-linear-to-br from-electric-500/20 to-navy-500/10 rounded-3xl blur-2xl group-hover:opacity-75 transition duration-500"></div>
+              <img src="/images/software/ai-studio/studio.png" alt="Adullam AI Studio" class="relative rounded-2xl shadow-2xl border border-navy-100/50" />
             </div>
-            <h3 class="text-lg font-bold text-navy-900 mb-2">Team Learning</h3>
-            <p class="text-navy-600/80 text-sm">Collaborative projects that build leadership and communication</p>
-            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+          </div>
+          <div class="order-1 lg:order-2 animate-on-scroll-right">
+            <h3 class="text-3xl font-extrabold text-navy-900 mb-6">Safe, Guided AI Development</h3>
+            <p class="text-lg text-navy-700 leading-relaxed mb-8">
+              The Adullam AI Studio is a protected frontier where students learn to <strong>use and develop their own AI applications</strong>. Using our <strong>Eureka Agent</strong> approach, we guide students through complex concepts, ensuring every innovation is safe and spiritually aligned.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-navy-600">
+                <svg class="w-6 h-6 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Socratic tutoring for building custom AI apps</span>
+              </li>
+              <li class="flex items-start gap-3 text-navy-600">
+                <svg class="w-6 h-6 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Rigorous safety filters for profane-free learning</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Approach Section -->
+  <!-- Value Propositions Grid -->
   <section class="py-24 lg:py-32 gradient-navy relative overflow-hidden">
-    <!-- Wave divider at top -->
-    <div class="section-divider-wave-top" style="transform: rotate(180deg)">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-cream">
-        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
-      </svg>
-    </div>
-    <!-- Background decoration -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/30 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-80 h-80 bg-electric-500/20 rounded-full blur-3xl"></div>
-    </div>
     <!-- Noise texture -->
     <div class="absolute inset-0 noise-overlay pointer-events-none"></div>
 
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
       <SectionHeader 
-        eyebrow="How We Teach"
-        title="Our Approach"
-        description="A structured, faith-centered methodology designed to transform students into confident builders and Kingdom leaders."
+        eyebrow="The Adullam Standard"
+        title="Why This Academy Matters"
+        description="We are preparing children for a world that doesn't exist yet, grounded in a Word that is eternal."
         light={true}
       />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-        {approachItems.map((item, index) => (
+        {methodology.map((item, index) => (
           <FeatureCard 
             title={item.title}
             description={item.description}
@@ -161,22 +155,22 @@ const approachItems = [
             <Fragment slot="icon">
               {item.number === 1 && (
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               )}
               {item.number === 2 && (
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               )}
               {item.number === 3 && (
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               )}
               {item.number === 4 && (
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               )}
             </Fragment>
@@ -186,18 +180,55 @@ const approachItems = [
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="py-24 lg:py-32 bg-cream-dark relative">
-    <!-- Wave divider at top -->
-    <div class="section-divider-wave-top">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-navy-700">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-      </svg>
-    </div>
+  <!-- Student Showcase (Video Funnel) -->
+  <section class="py-24 lg:py-32 bg-white">
     <div class="container mx-auto px-4 lg:px-8">
       <SectionHeader 
-        eyebrow="Testimonials"
-        title="What Parents & Students Say"
+        eyebrow="Evidence of Effectiveness"
+        title="What Our Students Build"
+        description="See the Adullam Method in action through student project walkthroughs."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+        <!-- Student Demo 1: Run David Run -->
+        <div class="group relative aspect-video bg-navy-100 rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/projects/run-david-run.gif" alt="Run David Run Demo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-linear-to-t from-navy-900/80 via-transparent to-transparent opacity-60"></div>
+          <div class="absolute bottom-4 left-4">
+            <p class="text-white font-bold text-lg">Run David Run!</p>
+            <p class="text-gold-400 text-xs uppercase tracking-widest font-semibold">Student Project: 2D Adventure</p>
+          </div>
+        </div>
+
+        <!-- Student Demo 2: Bible Bop -->
+        <div class="group relative aspect-video bg-navy-100 rounded-2xl overflow-hidden shadow-lg">
+          <img src="/videos/student-showcase/biblebop.gif" alt="Bible Bop Game Demo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-linear-to-t from-navy-900/80 via-transparent to-transparent opacity-60"></div>
+          <div class="absolute bottom-4 left-4">
+            <p class="text-white font-bold text-lg">Bible Bop</p>
+            <p class="text-gold-400 text-xs uppercase tracking-widest font-semibold">Student Project: Trivia Game</p>
+          </div>
+        </div>
+
+        <!-- Student Demo 3: Eseosa's Agent -->
+        <div class="group relative aspect-video bg-navy-100 rounded-2xl overflow-hidden shadow-lg">
+          <img src="/videos/student-showcase/ai-agent.gif" alt="AI Agent Demo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-linear-to-t from-navy-900/80 via-transparent to-transparent opacity-60"></div>
+          <div class="absolute bottom-4 left-4">
+            <p class="text-white font-bold text-lg">Eseosa's Agent</p>
+            <p class="text-gold-400 text-xs uppercase tracking-widest font-semibold">Student Project: AI Research Agent</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-24 lg:py-32 bg-cream-dark relative">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionHeader 
+        eyebrow="Transformation"
+        title="Results That Matter"
         description="Real stories from families who have experienced the Adullam Academy difference."
       />
 
@@ -209,32 +240,11 @@ const approachItems = [
 
   <!-- CTA Section -->
   <CTA 
-    headline="God Is Raising An Army of Giants"
-    subtext="Adullam Academy is a Kingdom-first preparation ground for exploits in Christ."
-    primaryCTA="Enrol Your Child"
-    primaryLink="/bootcamp"
-    secondaryCTA="See FAQs"
-    secondaryLink="/about#faq"
+    headline="Equip Your Child for the New Age"
+    subtext="Adullam Academy is a Kingdom-first preparation ground for effectiveness in innovation and leadership."
+    primaryCTA="Apply Now"
+    primaryLink={REGISTER_LINK}
+    secondaryCTA="See the Program"
+    secondaryLink="/bootcamp"
   />
-
-  <!-- FAQ Preview -->
-  <section class="py-24 lg:py-32 bg-white">
-    <div class="container mx-auto px-4 lg:px-8 text-center">
-      <SectionHeader 
-        eyebrow="Questions?"
-        title="Do You Have Any Questions?"
-        description="Visit our frequently asked questions page to learn more about the program."
-      />
-
-      <a 
-        href="/about#faq" 
-        class="btn-primary inline-flex items-center gap-2"
-      >
-        See FAQs
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
-    </div>
-  </section>
 </BaseLayout>

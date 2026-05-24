@@ -1,5 +1,5 @@
 ---
-value: "$150"
+value: "$300"
 label: "Registration"
 order: 4
 published: true
