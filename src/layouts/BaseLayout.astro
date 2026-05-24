@@ -35,9 +35,9 @@ interface Props {
 
 const {
   title = "Raising Kingdom Visionaries",
-  description = "Adullam Academy is a technocentric school of innovation that teaches kids and teenagers aged 8-18 how to build apps and AI-powered solutions with the aim of raising a generation of Kingdom-first tech leaders.",
+  description = "Adullam Academy is a School of Innovation that equips kids and teenagers with technical mastery, AI engineering, and Kingdom-first leadership skills to prepare them for effectiveness in the new age.",
   image = "/logos/logo.png",
-  showAnnouncement = false,
+  showAnnouncement = true,
 } = Astro.props;
 
 const siteTitle = `${title} | Adullam Academy`;
@@ -109,7 +109,7 @@ const canonicalURL = new URL(
     {
       showAnnouncement && (
         <AnnouncementBar
-          message="Registration is open for the Mar 21 – May 17 online cohort"
+          message="Registration is open for the Jun 13 – Aug 9 online cohort"
           link={REGISTER_LINK}
           linkText="Save My Spot"
         />
