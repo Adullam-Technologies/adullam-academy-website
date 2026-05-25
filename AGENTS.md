@@ -2,6 +2,12 @@
 
 Field guide for any agent working inside the Adullam Academy website repo (`astro` + `tailwindcss`). Use it to stay aligned with current architecture, coding standards, and workflow practices.
 
+## Sacred Mandate & Core Identity (NEVER ALTER)
+- **The Core DNA**: Adullam Academy is a mandate from God to raise Kingdom-first tech leaders. 
+- **Unchangeable Language**: Never alter or water down "Kingdom language" (e.g., "Kingdom-first," "Visionaries," "God-inspired ideas," "Jesus is Lord"). This is the foundational identity.
+- **Mission & Vision Cards**: The Mission and Vision cards in `src/pages/about.astro` are the immutable core of the Academy. They must NEVER be removed, relocated to obscure sections, or modified in substance.
+- **Kingdom Effectiveness**: All professionalization efforts must enhance, not replace, the spiritual authority of the brand.
+
 ## Quick Commands
 1. `npm install` – install dependencies (run once per clone/update).
 2. `npm run dev` – launch Astro dev server at `localhost:4321`; ideal for visual QA.
