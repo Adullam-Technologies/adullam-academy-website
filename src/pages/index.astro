@@ -20,27 +20,27 @@ const testimonials = await getCollection('testimonials', ({ data }) => {
 // Sort by order
 const sortedTestimonials = testimonials.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
-// The Adullam Method - Focused on Effectiveness & Safety
-const methodology = [
+// The Adullam Method - Focused on Effectiveness & Impact
+const approachItems = [
   {
     number: 1,
-    title: "Guided Discovery (The Eureka Agent)",
-    description: "Our proprietary AI doesn't just give answers, it acts as a Socratic tutor, asking the right questions to lead your child to their own 'Eureka!' moment.",
+    title: "Learn by Building",
+    description: "Students become creators instead of just consumers. During our 8-week bootcamps, teams work together to build and ship real solutions.",
   },
   {
     number: 2,
-    title: "Safety-First Innovation",
-    description: "We've engineered an AI Studio that is rigorously filtered and strictly profane-free, ensuring a safe frontier for spiritual and technical exploration.",
+    title: "Spirit-Led Innovation",
+    description: "Every session starts with prayer and ends with a 'Wisdom Cache' from the Bible. We ground every new idea in the wisdom of God's Word.",
   },
   {
     number: 3,
-    title: "Professional-Grade Tools",
-    description: "Students build in a custom-engineered LMS with an integrated code editor, learning to ship real software using industry-standard logic.",
+    title: "Team-Centred Projects",
+    description: "Students work in small groups to solve real-world problems. This helps them develop the leadership and teamwork skills they need to succeed.",
   },
   {
     number: 4,
-    title: "Kingdom-First Leadership",
-    description: "Technical skill is useless without character. Every innovation is grounded in Scripture, raising leaders who are as spiritually firm as they are technically effective.",
+    title: "Designed for Real Impact",
+    description: "Our bootcamps are structured, focused, and age-appropriate. Your child will leave with a working prototype, new skills, and a renewed sense of purpose.",
   },
 ];
 ---
@@ -145,7 +145,7 @@ const methodology = [
       />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-        {methodology.map((item, index) => (
+        {approachItems.map((item, index) => (
           <FeatureCard 
             title={item.title}
             description={item.description}
@@ -154,23 +154,27 @@ const methodology = [
           >
             <Fragment slot="icon">
               {item.number === 1 && (
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              )}
-              {item.number === 2 && (
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              )}
-              {item.number === 3 && (
+                /* Code Icon */
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               )}
-              {item.number === 4 && (
+              {item.number === 2 && (
+                /* Sparkles Icon */
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              )}
+              {item.number === 3 && (
+                /* Users Icon */
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+              {item.number === 4 && (
+                /* Lightning Bolt Icon */
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               )}
             </Fragment>
