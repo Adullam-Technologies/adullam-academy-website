@@ -117,8 +117,8 @@ const teamMembers = [
 ---
 
 <BaseLayout
-  title="Our Leadership & Mission"
-  description="Meet the leadership team at Adullam Academy and learn about our mission to raise effective Kingdom leaders through innovation."
+  title="About Us | Our Leadership & Mission"
+  description="Meet the team at Adullam Academy. Discover our mission to raise Kingdom-first tech leaders through Christian innovation."
 >
   <!-- Hero Section -->
   <section
@@ -206,9 +206,9 @@ const teamMembers = [
         <div class="animate-on-scroll-left">
            <div class="relative group max-w-md mx-auto">
               <div class="absolute inset-0 bg-linear-to-br from-gold-500/20 to-navy-500/20 rounded-3xl blur-xl group-hover:scale-105 transition-transform duration-500"></div>
-              <img
+                <img
                 src="/images/founder-new.png"
-                alt="Obaloluwa Odelana"
+                alt="Obaloluwa Odelana, Founder of Adullam Academy"
                 class="relative rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
               />
               <div class="absolute -bottom-6 -right-6 bg-navy-900 text-gold-500 p-6 rounded-2xl shadow-xl">
@@ -262,7 +262,7 @@ const teamMembers = [
                 {member.image && (
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.role} at Adullam Academy`}
                     class="h-full w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
                 )}
@@ -302,7 +302,7 @@ const teamMembers = [
                 {member.image && (
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.role} at Adullam Academy`}
                     class="h-full w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
                 )}
