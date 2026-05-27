@@ -7,6 +7,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ProjectShowcase from "../components/ProjectShowcase.astro";
 import Stats from "../components/Stats.astro";
+import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { REGISTER_LINK } from "../data/links";
 import { getCollection } from "astro:content";
@@ -28,46 +29,63 @@ const sortedProjects = projects
       `/images/projects/${p.data.category.toLowerCase().replace(" ", "-")}-placeholder.svg`,
   }));
 
+// Fetch FAQs
+const faqs = await getCollection("faq", ({ data }) => {
+  return data.published === true;
+});
+
+const sortedFaqs = await Promise.all(
+  faqs
+    .sort((a, b) => (a.data.order || 99) - (b.data.order || 99))
+    .map(async (faq) => {
+      const { Content } = await faq.render();
+      return {
+        question: faq.data.question,
+        answer: Content,
+      };
+    }),
+);
+
 // Program stats
 const programStats = [
-  { value: 3, label: "Bootcamps Yearly" },
-  { value: 8, label: "Weeks Each" },
-  { value: 1, suffix: "hr", label: "Stand-ups" },
-  { value: 3, label: "Students per Team" },
+  { value: 8, label: "Weeks Long" },
+  { value: 1, suffix: "hr", label: "Flexible Standups" },
+  { value: 2, label: "Premium Tracks" },
+  { value: 1, label: "Price ($300 CAD)" },
 ];
 
 // Curriculum Breakdown
 const modules = [
   {
     week: "Weeks 1-2",
-    title: "Foundations of Logic",
-    description: "Students master the core building blocks of programming through our proprietary LMS, building a solid foundation in computational thinking.",
+    title: "Foundations & Vision",
+    description: "Students master the core building blocks of their chosen track. Technical students learn Python logic, while Creative students master storyboarding and prompt design.",
     image: "/images/software/lms/coding-editor.png"
   },
   {
     week: "Weeks 3-5",
-    title: "Project Architecture",
-    description: "Moving from logic to architecture. Students begin building real applications and games, applying their skills to complex problems.",
+    title: "Architecture & Production",
+    description: "Moving from theory to creation. Students begin building real applications and generating assets, applying their skills to complex workflows and challenges.",
     image: "/images/software/lms/lessons-page.png"
   },
   {
     week: "Weeks 6-7",
-    title: "AI Development & Frontier",
-    description: "The Adullam AI Studio. Students learn to use and develop their own AI applications, building custom agents in a safe, guided environment using the Eureka Agent approach.",
+    title: "Integration & Refinement",
+    description: "Bringing it all together. Technical students integrate the Google SDK for their AI agents, while Creative students edit and polish their Hollywood-style trailers.",
     image: "/images/software/ai-studio/gabriel-bible-agent.png"
   },
   {
     week: "Week 8",
     title: "Launch & Leadership",
-    description: "The final showcase. Students present their prototypes, demonstrating both technical rigor and the spiritual vision behind their innovation.",
+    description: "The final showcase. Students present their prototypes and trailers, demonstrating both their mastery of the tools and the spiritual vision behind their innovation.",
     image: "/images/software/lms/quiz-page.png"
   }
 ];
 ---
 
 <BaseLayout
-  title="The Innovation Program"
-  description="Explore the Adullam Academy curriculum: an 8-week immersive journey into software engineering, AI engineering, and Kingdom leadership."
+  title="The Innovation Program | AI & Software Engineering for Kids"
+  description="Join the Adullam Academy 8-week bootcamp. Two tracks: AI Engineering with Python or Creative Visionary video production for Kingdom-first leaders."
 >
   <!-- Hero Section -->
   <section
@@ -81,20 +99,22 @@ const modules = [
     <div class="container mx-auto px-4 lg:px-8 py-32 relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="animate-on-scroll">
-          <p class="text-gold-400 font-semibold tracking-wider uppercase mb-4">The Adullam Method</p>
+          <div class="inline-block px-4 py-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-sm font-bold tracking-wider uppercase mb-6 shadow-glow">
+            Summer Cohort: June 13 – August 9
+          </div>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Building the Leaders of the <span class="gradient-text">Next Age</span>
+            Choose Your <span class="gradient-text">Path to Impact</span>
           </h1>
           <p class="text-xl text-white/80 mb-10 leading-relaxed">
-            Our 8-week innovation program equips children aged 8-16 with technical mastery, proprietary AI tools, and a firm foundation in Kingdom leadership.
+            Our 8-week summer program offers two distinct tracks: Engineer industry-standard AI agents with Python, or produce a Hollywood-style movie trailer.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a href={REGISTER_LINK} class="btn-primary text-lg px-10 py-4 flex items-center justify-center gap-2 shadow-glow">
               Enrol Your Child
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
             </a>
-            <a href="#curriculum" class="btn-secondary text-lg px-10 py-4 flex items-center justify-center gap-2">
-              See Curriculum
+            <a href="#tracks" class="btn-secondary text-lg px-10 py-4 flex items-center justify-center gap-2">
+              Explore the Tracks
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </a>
           </div>
@@ -102,7 +122,7 @@ const modules = [
         <div class="hidden lg:block animate-on-scroll-right">
           <div class="relative group">
             <div class="absolute -inset-4 bg-linear-to-br from-gold-500/30 to-electric-500/30 rounded-2xl blur-3xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
-            <img src="/images/software/lms/dashboard.png" alt="Adullam Platform" class="relative rounded-2xl shadow-2xl border border-white/10" />
+            <img src="/images/software/lms/dashboard.png" alt="Adullam Academy LMS Platform Dashboard" class="relative rounded-2xl shadow-2xl border border-white/10" />
           </div>
         </div>
       </div>
@@ -116,13 +136,150 @@ const modules = [
     </div>
   </section>
 
+  <!-- Tracks Section -->
+  <section id="tracks" class="py-24 lg:py-32 bg-white relative">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionHeader
+        eyebrow="Specialized Learning"
+        title="Two Tracks of Excellence"
+        description="Every student picks one track to master over the 8 weeks, guided by expert instruction."
+      />
+
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 mt-16 max-w-6xl mx-auto">
+        <!-- Track 1 -->
+        <div class="bg-navy-900 rounded-3xl p-8 lg:p-12 relative overflow-hidden group shadow-2xl border border-navy-800">
+          <div class="absolute inset-0 bg-linear-to-br from-electric-500/10 to-transparent z-0 group-hover:opacity-75 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-electric-500 rounded-2xl flex items-center justify-center mb-8">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="text-3xl font-extrabold text-white mb-4">Track 1: AI Engineering</h3>
+            <p class="text-white/80 text-lg leading-relaxed mb-8">
+              Students go beyond block-coding to write real Python code. They will learn industry-standard architecture, integrate with the Google SDK, and build functional AI agents.
+            </p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center gap-3 text-white">
+                <svg class="w-5 h-5 text-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Master Python Fundamentals
+              </li>
+              <li class="flex items-center gap-3 text-white">
+                <svg class="w-5 h-5 text-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Google SDK Integration
+              </li>
+              <li class="flex items-center gap-3 text-white">
+                <svg class="w-5 h-5 text-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Build Functional AI Agents
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="bg-gradient-to-br from-gold-500 to-gold-600 rounded-3xl p-8 lg:p-12 relative overflow-hidden group shadow-2xl">
+          <div class="absolute inset-0 bg-white/10 z-0 group-hover:opacity-0 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-navy-900 rounded-2xl flex items-center justify-center mb-8">
+              <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
+            </div>
+            <h3 class="text-3xl font-extrabold text-navy-900 mb-4">Track 2: Creative Visionary</h3>
+            <p class="text-navy-800 text-lg leading-relaxed font-medium mb-8">
+              Students learn to orchestrate advanced generative AI tools to direct, edit, and produce a breathtaking, Hollywood-style movie trailer from scratch.
+            </p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center gap-3 text-navy-900 font-medium">
+                <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Professional Storyboarding
+              </li>
+              <li class="flex items-center gap-3 text-navy-900 font-medium">
+                <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Advanced Prompt Engineering
+              </li>
+              <li class="flex items-center gap-3 text-navy-900 font-medium">
+                <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Video Production & Editing
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logistics & Investment -->
+  <section class="py-24 bg-cream-dark border-t border-navy-100/50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-navy-900 mb-6">Flexible Schedule, <br/><span class="text-gold-600">Premium Value</span></h2>
+          <p class="text-lg text-navy-700 leading-relaxed mb-8">
+            We know families are busy. That's why we offer a highly flexible standup schedule to ensure your child gets the collaboration, feedback, and guidance they need.
+          </p>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-white rounded-xl shadow-soft flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-1">June 13 – August 9</h4>
+                <p class="text-navy-600">8 weeks of immersive, high-impact learning.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-white rounded-xl shadow-soft flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-1">Flexible Standups</h4>
+                <p class="text-navy-600">Options from Tuesday to Sunday. Attend multiple sessions for max collaboration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 lg:p-10 rounded-3xl shadow-xl border border-navy-100/50 text-center relative overflow-hidden">
+          <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-gold-400 to-gold-600"></div>
+          <p class="text-navy-600 font-bold uppercase tracking-widest mb-4">Investment</p>
+          <div class="text-5xl font-extrabold text-navy-900 mb-2">$300 <span class="text-2xl text-navy-500 font-medium">CAD</span></div>
+          <p class="text-navy-500 mb-4">Per student, per track</p>
+          <div class="inline-block px-4 py-2 bg-gold-500/10 rounded-full text-gold-600 text-sm font-semibold mb-8 border border-gold-500/20">
+            Flexible: Pay $175/mo for 2 months
+          </div>
+          
+          <ul class="space-y-4 text-left mb-10 max-w-sm mx-auto">
+            <li class="flex items-center gap-3 text-navy-700">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              8-week comprehensive curriculum
+            </li>
+            <li class="flex items-center gap-3 text-navy-700">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Full access to Adullam LMS & AI Studio
+            </li>
+            <li class="flex items-center gap-3 text-navy-700">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Live collaborative standup sessions
+            </li>
+            <li class="flex items-center gap-3 text-navy-700">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Certificate of Completion
+            </li>
+          </ul>
+
+          <a href={REGISTER_LINK} class="btn-primary w-full py-4 text-lg justify-center flex items-center gap-2">
+            Secure Your Spot Now
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- The Adullam Method (Curriculum) -->
   <section id="curriculum" class="py-24 lg:py-32 bg-white relative">
     <div class="container mx-auto px-4 lg:px-8">
       <SectionHeader
         eyebrow="The Learning Journey"
         title="Our Curriculum Roadmap"
-        description="A structured progression from logic to innovation, supported by daily 1-hour stand-ups (Tues-Fri) to ensure every student thrives."
+        description="A structured progression supporting both tracks to ensure every student thrives and builds an incredible final project."
       />
 
       <div class="mt-20 space-y-12">
@@ -131,7 +288,7 @@ const modules = [
             <div class="lg:w-1/2">
               <div class="relative group">
                 <div class="absolute inset-0 bg-navy-900/5 rounded-2xl group-hover:bg-transparent transition-colors duration-300"></div>
-                <img src={module.image} alt={module.title} class="rounded-2xl shadow-xl border border-white" />
+                <img src={module.image} alt={`Adullam Academy curriculum: ${module.title}`} class="rounded-2xl shadow-xl border border-white" />
               </div>
             </div>
             <div class="lg:w-1/2">
@@ -141,6 +298,54 @@ const modules = [
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor Bio -->
+  <section class="py-24 lg:py-32 bg-cream-dark border-t border-navy-100/50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+        <div class="animate-on-scroll-left">
+           <div class="relative group max-w-md mx-auto">
+              <div class="absolute inset-0 bg-linear-to-br from-gold-500/20 to-navy-500/20 rounded-3xl blur-xl group-hover:scale-105 transition-transform duration-500"></div>
+                <img
+                src="/images/founder-new.png"
+                alt="Obaloluwa Odelana, Founder and Lead Instructor at Adullam Academy"
+                class="relative rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+              />
+              <div class="absolute -bottom-6 -right-6 bg-navy-900 text-gold-500 p-6 rounded-2xl shadow-xl">
+                <p class="text-xs font-bold uppercase tracking-widest mb-1">Lead Instructor</p>
+                <p class="text-lg font-extrabold">Obaloluwa Odelana</p>
+              </div>
+           </div>
+        </div>
+        <div class="animate-on-scroll-right">
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-navy-900 mb-8 leading-tight">Learn from an <span class="text-gold-600">Industry Expert</span></h2>
+          <div class="space-y-6 text-lg text-navy-700 leading-relaxed">
+            <p>
+              Obaloluwa Odelana is a Kingdom entrepreneur and software engineer with a background in <strong>AI research, automation engineering, and full-stack development</strong> across industry and academic settings. He has coached over 100 students in software development and led multiple high-impact youth innovation bootcamps.
+            </p>
+            <p>
+              His work at the Academy focuses on engineering the <strong>Adullam Method</strong>, a Socratic, AI-driven learning approach that guides students toward technical mastery through the lens of God's creative wisdom.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24 lg:py-32 bg-white scroll-mt-24">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionHeader
+        eyebrow="Got Questions?"
+        title="Frequently Asked Questions"
+        description="Everything you need to know about the upcoming cohort."
+      />
+
+      <div class="max-w-3xl mx-auto mt-12">
+        <FAQ items={sortedFaqs} allowMultiple={true} title="" />
       </div>
     </div>
   </section>
@@ -189,27 +394,10 @@ const modules = [
     </div>
   </section>
 
-  <!-- Project Showcase (Hidden for now) -->
-  {/*
-  <section class="py-24 lg:py-32 bg-cream">
-    <div class="container mx-auto px-4 lg:px-8">
-      <SectionHeader
-        eyebrow="Outcomes"
-        title="What Students Build"
-        description="Real software, games, and AI agents that reflect the skills and vision they've developed."
-      />
-
-      <div class="mt-12">
-        <ProjectShowcase projects={sortedProjects} showFilters={false} />
-      </div>
-    </div>
-  </section>
-  */}
-
   <!-- Registration CTA -->
   <CTA
     headline="Equip Your Child Today"
-    subtext="Secure a spot in our next cohort and watch your child transform into a technically effective Kingdom leader."
+    subtext="Secure a spot in our Summer Cohort (June 13 - August 9) and watch your child transform into a technically effective Kingdom leader."
     primaryCTA="Apply Now"
     primaryLink={REGISTER_LINK}
     secondaryCTA="Meet the Leadership"
