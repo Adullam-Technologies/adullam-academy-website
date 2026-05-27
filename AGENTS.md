@@ -114,4 +114,8 @@ Field guide for any agent working inside the Adullam Academy website repo (`astr
 6. Document manual testing steps in PR descriptions since no automated suite exists.
 7. Deployments are handled automatically via `.github/workflows/deploy.yml`, which builds on pushes to `main` and publishes `dist/` to GitHub Pages using the official `actions/deploy-pages` workflow. No manual deployment steps are required unless the workflow fails.
 
+## Marketing, SEO & Copywriting
+- **Balance Premium & Clarity**: While the site must maintain a premium, aspirational, Kingdom-first tone, it must never sacrifice clarity. Ensure all logistical details (pricing, dates, schedules) and technical specifics (Python, Google SDK) are explicitly clear to parents.
+- **SEO Best Practices**: Maintain descriptive titles, semantic HTML hierarchy (H1 -> H2 -> H3), proper image alt tags, and absolute URLs for Open Graph (OG) tags to maximize reach.
+
 Staying within these guardrails keeps the site’s intentional design, faith-centered storytelling, and light-weight Astro stack intact. Happy shipping!
