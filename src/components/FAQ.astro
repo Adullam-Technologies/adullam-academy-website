@@ -49,6 +49,7 @@ const {
     >
       <!-- Question (Button) -->
       <button
+        id={`faq-trigger-${index}`}
         class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-cream-dark/50 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-inset"
         aria-expanded="false"
         aria-controls={`faq-answer-${index}`}
@@ -68,6 +69,8 @@ const {
         id={`faq-answer-${index}`}
         class="faq-content overflow-hidden transition-all duration-500 ease-out"
         style="max-height: 0;"
+        role="region"
+        aria-labelledby={`faq-trigger-${index}`}
       >
         <div class="px-6 pb-6 pt-0">
           <div class="prose prose-navy max-w-none text-navy-700/80 leading-relaxed">
