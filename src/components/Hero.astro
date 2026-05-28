@@ -26,7 +26,6 @@
 
 import { REGISTER_LINK } from '../data/links';
 import { getCollection } from 'astro:content';
-import Countdown from './Countdown.astro';
 
 interface Props {
   headline?: string;
@@ -143,11 +142,6 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
       >
         {subtext}
       </p>
-
-      <!-- Enrollment Countdown -->
-      <div class="mb-12">
-        <Countdown targetDate="2026-06-20T09:00:00" />
-      </div>
 
       <!-- CTA Buttons -->
       <div 
