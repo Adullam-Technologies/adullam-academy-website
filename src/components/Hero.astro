@@ -40,7 +40,7 @@ interface Props {
 
 const {
   headline = "Raising Kingdom Visionaries",
-  subtext = "Equipping the next generation of innovators to build real-world solutions, rooted in God's wisdom and powered by code.",
+  subtext = "Adullam Academy is a Kingdom-first preparation ground where your child masters how to build apps and AI-powered solutions.",
   primaryCTA = "Register Now",
   primaryLink = REGISTER_LINK,
   secondaryCTA = "Learn More",
@@ -116,7 +116,7 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
   )}
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+  <div class="relative z-10 container mx-auto px-4 lg:px-8 py-12 lg:py-20 text-center">
     <div class="max-w-4xl mx-auto">
       <!-- Eyebrow text -->
       <p 
@@ -203,7 +203,11 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce-soft">
-    <a href="#about" class="block p-2 text-white/50 hover:text-white transition-colors duration-300">
+    <a 
+      href="#about" 
+      class="block p-2 text-white/50 hover:text-white transition-colors duration-300"
+      aria-label="Scroll to about section"
+    >
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>

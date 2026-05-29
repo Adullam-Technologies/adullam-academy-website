@@ -1,0 +1,117 @@
+---
+/**
+ * Countdown Component
+ * 
+ * A visually engaging countdown timer to build urgency for cohort enrollment.
+ * Styled with Kingdom-first aesthetics (Gold & Navy).
+ * 
+ * Props:
+ * @prop {string} targetDate - The ISO date string to count down to (e.g., "2026-06-20T09:00:00")
+ * @prop {string} title - Optional title text above the timer
+ */
+
+interface Props {
+  targetDate: string;
+  title?: string;
+}
+
+const { 
+  targetDate, 
+  title = "Next Cohort Commences In:" 
+} = Astro.props;
+---
+
+<div class="countdown-wrapper animate-on-scroll" style="animation-delay: 0.9s;">
+  {title && (
+    <p class="text-gold-400 text-sm font-bold uppercase tracking-widest mb-4 text-center">
+      {title}
+    </p>
+  )}
+  
+  <div class="flex items-center justify-center gap-3 sm:gap-6" id="countdown" data-target={targetDate} aria-live="off">
+    <span class="sr-only">Countdown to {new Date(targetDate).toLocaleDateString()}: days, hours, minutes, and seconds remaining.</span>
+    
+    <!-- Days -->
+    <div class="flex flex-col items-center justify-center w-16 sm:w-24 h-20 sm:h-28 rounded-2xl glass-dark border border-white/10 shadow-xl transition-all duration-300 hover:border-gold-500/30 hover:scale-105 group hover:shadow-[0_0_30px_rgba(212,168,83,0.15)]">
+      <div class="text-2xl sm:text-4xl font-extrabold text-white leading-none mb-1 sm:mb-2 [text-shadow:0_0_15px_rgba(212,168,83,0.4)]" id="days">00</div>
+      <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white/50 group-hover:text-gold-400 transition-colors">Days</div>
+    </div>
+    
+    <div class="text-2xl sm:text-4xl font-bold text-gold-500/50 animate-pulse-glow mb-6 sm:mb-8">:</div>
+    
+    <!-- Hours -->
+    <div class="flex flex-col items-center justify-center w-16 sm:w-24 h-20 sm:h-28 rounded-2xl glass-dark border border-white/10 shadow-xl transition-all duration-300 hover:border-gold-500/30 hover:scale-105 group hover:shadow-[0_0_30px_rgba(212,168,83,0.15)]">
+      <div class="text-2xl sm:text-4xl font-extrabold text-white leading-none mb-1 sm:mb-2 [text-shadow:0_0_15px_rgba(212,168,83,0.4)]" id="hours">00</div>
+      <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white/50 group-hover:text-gold-400 transition-colors">Hrs</div>
+    </div>
+    
+    <div class="text-2xl sm:text-4xl font-bold text-gold-500/50 animate-pulse-glow mb-6 sm:mb-8">:</div>
+    
+    <!-- Minutes -->
+    <div class="flex flex-col items-center justify-center w-16 sm:w-24 h-20 sm:h-28 rounded-2xl glass-dark border border-white/10 shadow-xl transition-all duration-300 hover:border-gold-500/30 hover:scale-105 group hover:shadow-[0_0_30px_rgba(212,168,83,0.15)]">
+      <div class="text-2xl sm:text-4xl font-extrabold text-white leading-none mb-1 sm:mb-2 [text-shadow:0_0_15px_rgba(212,168,83,0.4)]" id="minutes">00</div>
+      <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white/50 group-hover:text-gold-400 transition-colors">Min</div>
+    </div>
+    
+    <div class="text-2xl sm:text-4xl font-bold text-gold-500/50 animate-pulse-glow mb-6 sm:mb-8">:</div>
+    
+    <!-- Seconds -->
+    <div class="flex flex-col items-center justify-center w-16 sm:w-24 h-20 sm:h-28 rounded-2xl glass-dark border border-white/10 shadow-xl transition-all duration-300 hover:border-gold-500/30 hover:scale-105 group hover:shadow-[0_0_30px_rgba(212,168,83,0.15)]">
+      <div class="text-2xl sm:text-4xl font-extrabold text-white leading-none mb-1 sm:mb-2 [text-shadow:0_0_15px_rgba(212,168,83,0.4)]" id="seconds">00</div>
+      <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white/50 group-hover:text-gold-400 transition-colors">Sec</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCountdown() {
+    const countdownEl = document.getElementById('countdown');
+    if (!countdownEl) return;
+
+    const targetDate = new Date(countdownEl.dataset.target || '').getTime();
+    
+    const elements = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+
+    function update() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        if (elements.days) elements.days.innerText = "00";
+        if (elements.hours) elements.hours.innerText = "00";
+        if (elements.minutes) elements.minutes.innerText = "00";
+        if (elements.seconds) elements.seconds.innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (elements.days) elements.days.innerText = String(days).padStart(2, '0');
+      if (elements.hours) elements.hours.innerText = String(hours).padStart(2, '0');
+      if (elements.minutes) elements.minutes.innerText = String(minutes).padStart(2, '0');
+      if (elements.seconds) elements.seconds.innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Initial call
+    update();
+    // Update every second
+    const interval = setInterval(update, 1000);
+    
+    // Cleanup on page unload (for view transitions)
+    document.addEventListener('astro:before-preparation', () => {
+      clearInterval(interval);
+    }, { once: true });
+  }
+
+  // Initialize on page load and on Astro transitions
+  document.addEventListener('DOMContentLoaded', initCountdown);
+  document.addEventListener('astro:page-load', initCountdown);
+</script>

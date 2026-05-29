@@ -6,4 +6,4 @@ featured: true
 published: true
 ---
 
-Please keep us looped in—my son is eager to keep building with your team after the spark you lit this session.
+Please keep us looped in. My son is eager to keep building with your team after the spark you lit this session.

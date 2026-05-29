@@ -6,4 +6,4 @@ featured: true
 published: true
 ---
 
-You reignited my daughter's curiosity for technology—thank you for leading such a joyful, purpose-filled program.
+You reignited my daughter's curiosity for technology. Thank you for leading such a joyful, purpose-filled program.
