@@ -6,4 +6,4 @@ featured: true
 published: true
 ---
 
-Thank you for pouring so much into the kids—God bless you for the excellence and care you show every day.
+Thank you for pouring so much into the kids. God bless you for the excellence and care you show every day.
