@@ -36,15 +36,14 @@ const {
 } = Astro.props;
 ---
 
-<div class="space-y-4" data-faq-container data-allow-multiple={allowMultiple}>
+<div class="space-y-4 animate-on-scroll" data-faq-container data-allow-multiple={allowMultiple}>
   {title && (
     <h2 class="text-3xl font-bold text-navy-900 mb-8 text-center">{title}</h2>
   )}
   
   {items.map((item, index) => (
     <div 
-      class="faq-item bg-white rounded-xl shadow-sm overflow-hidden animate-on-scroll border border-navy-100/50"
-      style={`animation-delay: ${index * 0.1}s;`}
+      class="faq-item bg-white rounded-xl shadow-sm overflow-hidden border border-navy-100/50"
       data-faq-item
     >
       <!-- Question (Button) -->
