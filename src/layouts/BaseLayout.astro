@@ -93,6 +93,16 @@ const ogImageURL = new URL(image, Astro.site || "https://adullamacademy.com");
     <!-- View Transitions -->
     <ViewTransitions />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Adullam Academy",
+      "url": "https://adullamacademy.com",
+      "logo": "https://adullamacademy.com/logos/logo.png",
+      "description": "Adullam Academy is a School of Innovation that equips kids and teenagers with technical mastery, AI engineering, and Kingdom-first leadership skills."
+    })} />
+
     <script
       defer
       is:inline
