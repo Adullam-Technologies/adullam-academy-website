@@ -99,6 +99,7 @@ const textClasses = {
         <a 
           href={primaryLink}
           class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
+          aria-label={`${primaryCTA} for Adullam Academy`}
         >
           {primaryCTA}
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,8 +109,9 @@ const textClasses = {
         
         {secondaryCTA && secondaryLink && (
           <a 
-            href={secondaryLink}
-            class={variant === 'minimal' ? 'btn-outline-gold text-lg px-8 py-4' : 'btn-secondary text-lg px-8 py-4'}
+          href={secondaryLink}
+          class={variant === 'minimal' ? 'btn-outline-gold text-lg px-8 py-4' : 'btn-secondary text-lg px-8 py-4'}
+          aria-label={`${secondaryCTA} for more details`}
           >
             {secondaryCTA}
           </a>

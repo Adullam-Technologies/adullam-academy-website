@@ -42,9 +42,118 @@ const sortedFaqs = await Promise.all(
       return {
         question: faq.data.question,
         answer: Content,
+        rawBody: faq.body,
       };
     }),
 );
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": sortedFaqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.rawBody
+    }
+  }))
+};
+
+const offersSchema = [
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "One Track - Full Payment",
+    "price": "300.00",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-05-01",
+    "category": "Paid"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "One Track - Monthly Installments",
+    "price": "175.00",
+    "priceCurrency": "CAD",
+    "description": "$175 per month for 2 months"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "Both Tracks - Full Payment",
+    "price": "450.00",
+    "priceCurrency": "CAD"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "Both Tracks - Monthly Installments",
+    "price": "250.00",
+    "priceCurrency": "CAD",
+    "description": "$250 per month for 2 months"
+  }
+];
+
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Adullam Academy Innovation Bootcamp",
+  "description": "An 8-week intensive bootcamp offering two tracks: AI Engineering with Python and AI Video Editing. Designed for Kingdom-first leaders.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Adullam Academy",
+    "sameAs": "https://adullamacademy.com"
+  },
+  "courseCode": "AA-IB-2026",
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "duration": "P8W",
+      "instructor": [
+        {
+          "@type": "Person",
+          "name": "Obaloluwa Odelana"
+        },
+        {
+          "@type": "Person",
+          "name": "Chim Wopara"
+        }
+      ],
+      "startDate": "2026-06-20",
+      "endDate": "2026-08-16",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://adullamacademy.com/bootcamp"
+      }
+    }
+  ],
+  "offers": offersSchema
+};
+
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Adullam Academy Summer Cohort 2026",
+  "description": "8-week immersive innovation bootcamp for kids and teenagers.",
+  "startDate": "2026-06-20T09:00:00-07:00",
+  "endDate": "2026-08-16T17:00:00-07:00",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://adullamacademy.com/bootcamp"
+  },
+  "image": "https://adullamacademy.com/images/software/lms/dashboard.png",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Adullam Academy",
+    "url": "https://adullamacademy.com"
+  },
+  "offers": offersSchema
+};
 
 // Program stats
 const programStats = [
@@ -84,7 +193,7 @@ const modules = [
 ---
 
 <BaseLayout
-  title="The Innovation Program | AI & Software Engineering for Kids"
+  title="The Innovation Bootcamp | AI & Software Engineering for Kids"
   description="Join the Adullam Academy 8-week bootcamp. Two tracks: AI Engineering with Python or AI Video Editing for Kingdom-first leaders."
 >
   <!-- Hero Section -->
@@ -122,7 +231,7 @@ const modules = [
         <div class="hidden lg:block animate-on-scroll-right">
           <div class="relative group">
             <div class="absolute -inset-4 bg-linear-to-br from-gold-500/30 to-electric-500/30 rounded-2xl blur-3xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
-            <img src="/images/software/lms/dashboard.png" alt="Adullam Academy LMS Platform Dashboard" class="relative rounded-2xl shadow-2xl border border-white/10" />
+            <img src="/images/software/lms/dashboard.png" loading="eager" decoding="async" width="800" height="600" alt="Adullam Academy LMS Platform Dashboard" class="relative rounded-2xl shadow-2xl border border-white/10" />
           </div>
         </div>
       </div>
@@ -241,8 +350,11 @@ const modules = [
           <p class="text-navy-600 font-bold uppercase tracking-widest mb-4">Investment</p>
           <div class="text-5xl font-extrabold text-navy-900 mb-2">$300 <span class="text-2xl text-navy-500 font-medium">CAD</span></div>
           <p class="text-navy-500 mb-4">Per student, per track</p>
-          <div class="inline-block px-4 py-2 bg-gold-500/10 rounded-full text-gold-600 text-sm font-semibold mb-8 border border-gold-500/20">
-            Flexible: Pay $175/mo for 2 months
+          <div class="inline-block px-4 py-2 bg-gold-500/10 rounded-full text-gold-600 text-sm font-semibold mb-2 border border-gold-500/20">
+            Pay $175/mo for 2 months
+          </div>
+          <div class="text-navy-600 text-sm font-bold mb-8">
+            Enrol in both tracks for $450 (or $250/mo)
           </div>
           
           <ul class="space-y-4 text-left mb-10 max-w-sm mx-auto">
@@ -288,7 +400,7 @@ const modules = [
             <div class="lg:w-1/2">
               <div class="relative group">
                 <div class="absolute inset-0 bg-navy-900/5 rounded-2xl group-hover:bg-transparent transition-colors duration-300"></div>
-                <img src={module.image} alt={`Adullam Academy curriculum: ${module.title}`} class="rounded-2xl shadow-xl border border-white" />
+                <img src={module.image} loading="lazy" decoding="async" width="800" height="450" alt={`Adullam Academy curriculum: ${module.title}`} class="rounded-2xl shadow-xl border border-white" />
               </div>
             </div>
             <div class="lg:w-1/2">
@@ -431,4 +543,8 @@ const modules = [
     secondaryCTA="Meet the Leadership"
     secondaryLink="/about"
   />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(courseSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(eventSchema)} />
 </BaseLayout>
