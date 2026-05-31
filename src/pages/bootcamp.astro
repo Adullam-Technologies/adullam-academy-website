@@ -63,14 +63,14 @@ const faqSchema = {
 const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "Adullam Academy Innovation Program",
+  "name": "Adullam Academy Innovation Bootcamp",
   "description": "An 8-week intensive bootcamp offering two tracks: AI Engineering with Python and AI Video Editing. Designed for Kingdom-first leaders.",
   "provider": {
     "@type": "Organization",
     "name": "Adullam Academy",
     "sameAs": "https://adullamacademy.com"
   },
-  "courseCode": "AA-IP-2026",
+  "courseCode": "AA-IB-2026",
   "hasCourseInstance": [
     {
       "@type": "CourseInstance",
@@ -94,19 +94,42 @@ const courseSchema = {
       }
     }
   ],
-  "offers": {
-    "@type": "Offer",
-    "price": "300.00",
-    "priceCurrency": "CAD",
-    "category": "Paid"
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "One Track - Full Payment",
+      "price": "300.00",
+      "priceCurrency": "CAD",
+      "category": "Paid"
+    },
+    {
+      "@type": "Offer",
+      "name": "One Track - Monthly Installments",
+      "price": "175.00",
+      "priceCurrency": "CAD",
+      "description": "$175 per month for 2 months"
+    },
+    {
+      "@type": "Offer",
+      "name": "Both Tracks - Full Payment",
+      "price": "450.00",
+      "priceCurrency": "CAD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Both Tracks - Monthly Installments",
+      "price": "250.00",
+      "priceCurrency": "CAD",
+      "description": "$250 per month for 2 months"
+    }
+  ]
 };
 
 const eventSchema = {
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "Adullam Academy Summer Cohort 2026",
-  "description": "8-week immersive innovation program for kids and teenagers.",
+  "description": "8-week immersive innovation bootcamp for kids and teenagers.",
   "startDate": "2026-06-20T09:00:00-07:00",
   "endDate": "2026-08-16T17:00:00-07:00",
   "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
@@ -121,14 +144,40 @@ const eventSchema = {
     "name": "Adullam Academy",
     "url": "https://adullamacademy.com"
   },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://adullamacademy.com/bootcamp",
-    "price": "300",
-    "priceCurrency": "CAD",
-    "availability": "https://schema.org/InStock",
-    "validFrom": "2026-05-01"
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "url": "https://adullamacademy.com/bootcamp",
+      "name": "One Track - Full Payment",
+      "price": "300",
+      "priceCurrency": "CAD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    },
+    {
+      "@type": "Offer",
+      "url": "https://adullamacademy.com/bootcamp",
+      "name": "One Track - Monthly Installments",
+      "price": "175",
+      "priceCurrency": "CAD",
+      "description": "$175 per month for 2 months"
+    },
+    {
+      "@type": "Offer",
+      "url": "https://adullamacademy.com/bootcamp",
+      "name": "Both Tracks - Full Payment",
+      "price": "450",
+      "priceCurrency": "CAD"
+    },
+    {
+      "@type": "Offer",
+      "url": "https://adullamacademy.com/bootcamp",
+      "name": "Both Tracks - Monthly Installments",
+      "price": "250",
+      "priceCurrency": "CAD",
+      "description": "$250 per month for 2 months"
+    }
+  ]
 };
 
 // Program stats
@@ -169,7 +218,7 @@ const modules = [
 ---
 
 <BaseLayout
-  title="The Innovation Program | AI & Software Engineering for Kids"
+  title="The Innovation Bootcamp | AI & Software Engineering for Kids"
   description="Join the Adullam Academy 8-week bootcamp. Two tracks: AI Engineering with Python or AI Video Editing for Kingdom-first leaders."
 >
   <!-- Hero Section -->
@@ -326,8 +375,11 @@ const modules = [
           <p class="text-navy-600 font-bold uppercase tracking-widest mb-4">Investment</p>
           <div class="text-5xl font-extrabold text-navy-900 mb-2">$300 <span class="text-2xl text-navy-500 font-medium">CAD</span></div>
           <p class="text-navy-500 mb-4">Per student, per track</p>
-          <div class="inline-block px-4 py-2 bg-gold-500/10 rounded-full text-gold-600 text-sm font-semibold mb-8 border border-gold-500/20">
-            Flexible: Pay $175/mo for 2 months
+          <div class="inline-block px-4 py-2 bg-gold-500/10 rounded-full text-gold-600 text-sm font-semibold mb-2 border border-gold-500/20">
+            Pay $175/mo for 2 months
+          </div>
+          <div class="text-navy-600 text-sm font-bold mb-8">
+            Enrol in both tracks for $450 (or $250/mo)
           </div>
           
           <ul class="space-y-4 text-left mb-10 max-w-sm mx-auto">
