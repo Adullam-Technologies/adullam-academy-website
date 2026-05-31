@@ -151,6 +151,7 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
         <a 
           href={primaryLink}
           class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
+          aria-label={`Register for ${headline}`}
         >
           {primaryCTA}
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,6 +161,7 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
         <a 
           href={secondaryLink}
           class="btn-secondary text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
+          aria-label="Learn more about the innovation program"
         >
           {secondaryCTA}
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
