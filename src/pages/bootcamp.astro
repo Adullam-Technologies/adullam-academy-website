@@ -60,6 +60,42 @@ const faqSchema = {
   }))
 };
 
+const offersSchema = [
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "One Track - Full Payment",
+    "price": "300.00",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-05-01",
+    "category": "Paid"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "One Track - Monthly Installments",
+    "price": "175.00",
+    "priceCurrency": "CAD",
+    "description": "$175 per month for 2 months"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "Both Tracks - Full Payment",
+    "price": "450.00",
+    "priceCurrency": "CAD"
+  },
+  {
+    "@type": "Offer",
+    "url": "https://adullamacademy.com/bootcamp",
+    "name": "Both Tracks - Monthly Installments",
+    "price": "250.00",
+    "priceCurrency": "CAD",
+    "description": "$250 per month for 2 months"
+  }
+];
+
 const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
@@ -94,35 +130,7 @@ const courseSchema = {
       }
     }
   ],
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "One Track - Full Payment",
-      "price": "300.00",
-      "priceCurrency": "CAD",
-      "category": "Paid"
-    },
-    {
-      "@type": "Offer",
-      "name": "One Track - Monthly Installments",
-      "price": "175.00",
-      "priceCurrency": "CAD",
-      "description": "$175 per month for 2 months"
-    },
-    {
-      "@type": "Offer",
-      "name": "Both Tracks - Full Payment",
-      "price": "450.00",
-      "priceCurrency": "CAD"
-    },
-    {
-      "@type": "Offer",
-      "name": "Both Tracks - Monthly Installments",
-      "price": "250.00",
-      "priceCurrency": "CAD",
-      "description": "$250 per month for 2 months"
-    }
-  ]
+  "offers": offersSchema
 };
 
 const eventSchema = {
@@ -144,40 +152,7 @@ const eventSchema = {
     "name": "Adullam Academy",
     "url": "https://adullamacademy.com"
   },
-  "offers": [
-    {
-      "@type": "Offer",
-      "url": "https://adullamacademy.com/bootcamp",
-      "name": "One Track - Full Payment",
-      "price": "300",
-      "priceCurrency": "CAD",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-05-01"
-    },
-    {
-      "@type": "Offer",
-      "url": "https://adullamacademy.com/bootcamp",
-      "name": "One Track - Monthly Installments",
-      "price": "175",
-      "priceCurrency": "CAD",
-      "description": "$175 per month for 2 months"
-    },
-    {
-      "@type": "Offer",
-      "url": "https://adullamacademy.com/bootcamp",
-      "name": "Both Tracks - Full Payment",
-      "price": "450",
-      "priceCurrency": "CAD"
-    },
-    {
-      "@type": "Offer",
-      "url": "https://adullamacademy.com/bootcamp",
-      "name": "Both Tracks - Monthly Installments",
-      "price": "250",
-      "priceCurrency": "CAD",
-      "description": "$250 per month for 2 months"
-    }
-  ]
+  "offers": offersSchema
 };
 
 // Program stats
