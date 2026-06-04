@@ -84,31 +84,47 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Quick Links -->
-      <div>
+      <div class="md:col-span-2 lg:col-span-1">
         <h3 class="text-lg font-bold mb-6 text-gold-400">Quick Links</h3>
-        <ul class="space-y-3">
-          {
-            quickLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-white/70 hover:text-white hover:pl-2 transition-all duration-300 inline-block"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-          <li>
-            <a
-              href={REGISTER_LINK}
-              class="text-gold-500 hover:text-gold-400 hover:pl-2 transition-all duration-300 inline-block font-medium"
-              aria-label="Register now for the next cohort"
-            >
-              Register Now
-            </a>
-          </li>
-        </ul>
+        <div class="grid grid-cols-2 gap-4">
+          <ul class="space-y-3">
+            {
+              quickLinks.slice(0, 4).map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-white/70 hover:text-white hover:pl-2 transition-all duration-300 inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="space-y-3">
+            {
+              quickLinks.slice(4).map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-white/70 hover:text-white hover:pl-2 transition-all duration-300 inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a
+                href={REGISTER_LINK}
+                class="text-gold-500 hover:text-gold-400 hover:pl-2 transition-all duration-300 inline-block font-medium"
+                aria-label="Register now for the next cohort"
+              >
+                Register
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Contact Info -->
