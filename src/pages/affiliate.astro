@@ -86,7 +86,7 @@ const rewardBreakdown = [
 ---
 
 <BaseLayout 
-  title="Kingdom Partner Program | Adullam Academy"
+  title="Kingdom Partner Program"
   description="Join the Adullam Academy affiliate program. Refer students to our Innovation Bootcamp and earn a 5% commission while helping raise Kingdom-first leaders."
 >
   <!-- Hero Section -->
@@ -274,7 +274,7 @@ const rewardBreakdown = [
         <div class="relative animate-on-scroll-right">
           <div class="absolute -inset-4 bg-linear-to-br from-gold-500/20 to-navy-500/10 rounded-3xl blur-2xl"></div>
           <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-navy-100/50 aspect-video bg-navy-900">
-            <img src="/videos/student-showcase/ai-agent.gif" alt="Adullam Academy student showcasing an AI agent project" class="w-full h-full object-cover" />
+            <img src="/videos/student-showcase/ai-agent.gif" loading="lazy" decoding="async" width="800" height="450" alt="Adullam Academy student showcasing an AI agent project" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -290,4 +290,19 @@ const rewardBreakdown = [
     secondaryCTA="Back to Home"
     secondaryLink="/"
   />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Kingdom Partner Program | Adullam Academy",
+    "description": "Join the Adullam Academy affiliate program. Refer students to our Innovation Bootcamp and earn a 5% commission.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Adullam Academy",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://adullamacademy.com/logos/logo.png"
+      }
+    }
+  })} />
 </BaseLayout>
