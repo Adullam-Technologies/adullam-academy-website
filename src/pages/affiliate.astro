@@ -13,9 +13,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import CTA from '../components/CTA.astro';
-
-// Placeholder for the form link
-const AFFILIATE_FORM_LINK = "#";
+import { PARTNER_LINK } from '../data/links';
 
 const earningsSteps = [
   {
@@ -110,7 +108,7 @@ const rewardBreakdown = [
         Help us raise the next generation of Kingdom-first leaders. Spread the word about our Innovation Bootcamp and earn a <strong>5% commission</strong> for every student who enrolls.
       </p>
       <div class="mt-10 animate-on-scroll">
-        <a href={AFFILIATE_FORM_LINK} class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2">
+        <a href={PARTNER_LINK} class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2">
           Join the Program
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -214,7 +212,7 @@ const rewardBreakdown = [
         <p class="text-white/70 mb-8 text-lg">
           Join our network of visionaries and help spread the word about Adullam Academy. Every student you refer is a new leader equipped for the future.
         </p>
-        <a href={AFFILIATE_FORM_LINK} class="btn-primary inline-flex items-center gap-2">
+        <a href={PARTNER_LINK} class="btn-primary inline-flex items-center gap-2">
           Apply to be a Partner
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -271,7 +269,7 @@ const rewardBreakdown = [
     headline="Let's Build the Future Together"
     subtext="Join the Kingdom Partner Program today and help us reach the next generation of visionaries."
     primaryCTA="Apply Now"
-    primaryLink={AFFILIATE_FORM_LINK}
+    primaryLink={PARTNER_LINK}
     secondaryCTA="Back to Home"
     secondaryLink="/"
   />
