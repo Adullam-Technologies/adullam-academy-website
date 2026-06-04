@@ -1,0 +1,278 @@
+---
+/**
+ * Affiliate Page
+ * 
+ * Partnership program details and commission structure.
+ * - Program overview
+ * - Earning examples
+ * - Partnership philosophy
+ * - Join CTA (Form placeholder)
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CTA from '../components/CTA.astro';
+
+// Placeholder for the form link
+const AFFILIATE_FORM_LINK = "#";
+
+const earningsSteps = [
+  {
+    number: 1,
+    title: "Spread the Word",
+    description: "Share Adullam Academy with your network of parents, pastors, and community leaders who value Kingdom-first education.",
+  },
+  {
+    number: 2,
+    title: "Students Enrol",
+    description: "When a student registers for our Innovation Bootcamp using your referral, they begin a journey of spiritual and technical growth.",
+  },
+  {
+    number: 3,
+    title: "Earn Commission",
+    description: "Receive a 5% commission for every successful enrollment. We value our partners who help us reach more families.",
+  },
+];
+
+const commissionExamples = [
+  {
+    enrollments: "1 Enrollment",
+    amount: "$25",
+    prefix: "Up to",
+    label: "Initial Impact",
+    delay: 0.1
+  },
+  {
+    enrollments: "10 Enrollments",
+    amount: "$250",
+    prefix: "Up to",
+    label: "Growing Influence",
+    delay: 0.2
+  },
+  {
+    enrollments: "50 Enrollments",
+    amount: "$1,250",
+    prefix: "Up to",
+    label: "Kingdom Partnership",
+    delay: 0.3
+  }
+];
+
+const rewardBreakdown = [
+  {
+    type: "Single Track",
+    basis: "One-time Payment",
+    commission: "$15.00",
+    note: "5% of $300"
+  },
+  {
+    type: "Single Track",
+    basis: "Monthly Installments",
+    commission: "$17.50",
+    note: "5% of $350 total"
+  },
+  {
+    type: "Both Tracks Combined",
+    basis: "One-time Payment",
+    commission: "$22.50",
+    note: "5% of $450"
+  },
+  {
+    type: "Both Tracks Combined",
+    basis: "Monthly Installments",
+    commission: "$25.00",
+    note: "5% of $500 total"
+  }
+];
+---
+
+<BaseLayout 
+  title="Kingdom Partner Program | Adullam Academy"
+  description="Join the Adullam Academy affiliate program. Refer students to our Innovation Bootcamp and earn a 5% commission while helping raise Kingdom-first leaders."
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center gradient-hero overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-electric-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+      <div class="absolute inset-0 noise-overlay"></div>
+    </div>
+
+    <div class="container mx-auto px-4 lg:px-8 py-32 relative z-10 text-center">
+      <p class="text-gold-400 font-semibold tracking-wider uppercase mb-4 animate-on-scroll">
+        Partnership Opportunity
+      </p>
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight animate-on-scroll">
+        Kingdom <span class="gradient-text">Partner Program</span>
+      </h1>
+      <p class="text-xl text-white/80 max-w-3xl mx-auto animate-on-scroll leading-relaxed">
+        Help us raise the next generation of Kingdom-first leaders. Spread the word about our Innovation Bootcamp and earn a <strong>5% commission</strong> for every student who enrolls.
+      </p>
+      <div class="mt-10 animate-on-scroll">
+        <a href={AFFILIATE_FORM_LINK} class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2">
+          Join the Program
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="py-24 lg:py-32 bg-cream">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionHeader 
+        eyebrow="The Process"
+        title="How the Program Works"
+        description="Simple, transparent, and impactful. Your referrals change lives, and we reward your commitment to the mission."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+        {earningsSteps.map((item, index) => (
+          <div class="group relative p-8 bg-white rounded-2xl shadow-soft border border-navy-100/30 animate-on-scroll card-hover overflow-hidden" style={`animation-delay: ${index * 0.15}s;`}>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center mb-6 text-gold-600 font-bold text-xl">
+              {item.number}
+            </div>
+            <h3 class="text-xl font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-navy-600 leading-relaxed">
+              {item.description}
+            </p>
+            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Commission Structure -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 noise-overlay opacity-10"></div>
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+      <SectionHeader 
+        eyebrow="The Reward"
+        title="Commission Structure"
+        description="We offer a 5% commission on every enrollment. Whether you refer one student or many, your contribution helps us grow the Kingdom."
+        light={true}
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {commissionExamples.map((example) => (
+          <div 
+            class="group relative p-10 rounded-2xl glass-dark border border-white/10 text-center animate-on-scroll card-hover"
+            style={`animation-delay: ${example.delay}s;`}
+          >
+            <p class="text-gold-400 font-bold uppercase tracking-widest text-sm mb-4">{example.label}</p>
+            <div class="text-white text-lg font-medium mb-2">{example.enrollments}</div>
+            <div class="flex items-center justify-center gap-2 mb-4">
+              <span class="text-white/50 text-sm lg:text-base font-bold uppercase tracking-wider">{example.prefix}</span>
+              <div class="text-4xl lg:text-5xl font-extrabold text-white gradient-text inline-block">
+                {example.amount}
+              </div>
+            </div>
+            <div class="w-12 h-1 bg-gold-500/30 mx-auto rounded-full group-hover:w-20 group-hover:bg-gold-500 transition-all duration-500"></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Detailed Breakdown Table -->
+      <div class="mt-24 max-w-4xl mx-auto animate-on-scroll">
+        <h3 class="text-2xl font-bold text-white mb-8 text-center">Reward Breakdown</h3>
+        <div class="overflow-x-auto rounded-2xl border border-white/10 glass-dark">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 bg-white/5">
+                <th class="px-6 py-4 text-gold-400 font-bold uppercase tracking-wider text-sm">Program Track</th>
+                <th class="px-6 py-4 text-gold-400 font-bold uppercase tracking-wider text-sm">Payment Type</th>
+                <th class="px-6 py-4 text-gold-400 font-bold uppercase tracking-wider text-sm text-right">Commission Reward</th>
+              </tr>
+            </thead>
+            <tbody class="text-white/80">
+              {rewardBreakdown.map((item) => (
+                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <td class="px-6 py-4 font-medium">{item.type}</td>
+                  <td class="px-6 py-4">
+                    {item.basis}
+                    <span class="block text-xs text-white/40 mt-0.5">{item.note}</span>
+                  </td>
+                  <td class="px-6 py-4 text-right font-bold text-white">{item.commission}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-6 text-center text-white/50 text-sm">
+          * Rewards are paid out after the student has successfully enrolled and passed the first week of the bootcamp.
+        </p>
+      </div>
+
+      <div class="mt-20 max-w-3xl mx-auto p-8 rounded-2xl glass border border-gold-500/20 text-center animate-on-scroll">
+        <h3 class="text-2xl font-bold text-white mb-4">Ready to get started?</h3>
+        <p class="text-white/70 mb-8 text-lg">
+          Join our network of visionaries and help spread the word about Adullam Academy. Every student you refer is a new leader equipped for the future.
+        </p>
+        <a href={AFFILIATE_FORM_LINK} class="btn-primary inline-flex items-center gap-2">
+          Apply to be a Partner
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Alignment -->
+  <section class="py-24 lg:py-32 bg-cream">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+        <div class="animate-on-scroll-left">
+          <p class="text-gold-600 font-semibold tracking-wider uppercase mb-4">Why Partner With Us?</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mb-6 leading-tight">
+            Raised for such <span class="text-gold-600 italic">a time as this.</span>
+          </h2>
+          <div class="space-y-6 text-navy-700 text-lg leading-relaxed">
+            <p>
+              Adullam Academy is more than just a coding school; it's a preparation ground where technical rigor meets spiritual authority. When you refer a student, you aren't just selling a program—you're facilitating a divine connection.
+            </p>
+            <p>
+              Our curriculum is designed to equip children with the tools of innovation while grounding them in the eternal wisdom of God's Word. We believe every child is a solution-provider waiting to be activated.
+            </p>
+            <ul class="space-y-4 pt-4">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-gold-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Help families find a safe, faith-filled tech education</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-gold-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Support the development of Kingdom-first innovators</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-gold-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Earn rewards for your advocacy and belief in the mission</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="relative animate-on-scroll-right">
+          <div class="absolute -inset-4 bg-linear-to-br from-gold-500/20 to-navy-500/10 rounded-3xl blur-2xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-navy-100/50">
+            <img src="/images/about/mission.jpg" alt="Adullam Academy students collaborating on a project" class="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTA 
+    headline="Let's Build the Future Together"
+    subtext="Join the Kingdom Partner Program today and help us reach the next generation of visionaries."
+    primaryCTA="Apply Now"
+    primaryLink={AFFILIATE_FORM_LINK}
+    secondaryCTA="Back to Home"
+    secondaryLink="/"
+  />
+</BaseLayout>
