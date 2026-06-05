@@ -11,7 +11,6 @@
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import FeatureCard from '../components/FeatureCard.astro';
 import CTA from '../components/CTA.astro';
 import { PARTNER_LINK } from '../data/links';
 
@@ -86,7 +85,7 @@ const rewardBreakdown = [
 ---
 
 <BaseLayout 
-  title="Kingdom Partner Program | Adullam Academy"
+  title="Kingdom Partner Program"
   description="Join the Adullam Academy affiliate program. Refer students to our Innovation Bootcamp and earn a 5% commission while helping raise Kingdom-first leaders."
 >
   <!-- Hero Section -->
@@ -176,8 +175,25 @@ const rewardBreakdown = [
         ))}
       </div>
 
+      <!-- Important Policy Banner -->
+      <div class="mt-16 max-w-4xl mx-auto animate-on-scroll">
+        <div class="p-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center gap-4 text-left">
+          <div class="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-navy-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-gold-400 font-bold uppercase tracking-wider text-xs mb-1">Payment Policy</p>
+            <p class="text-white text-lg">
+              To account for our refund policy, commissions will be credited <strong>21 days after the program start date of June 20</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Detailed Breakdown Table -->
-      <div class="mt-24 max-w-4xl mx-auto animate-on-scroll">
+      <div class="mt-12 max-w-4xl mx-auto animate-on-scroll">
         <h3 class="text-2xl font-bold text-white mb-8 text-center">Reward Breakdown</h3>
         <div class="overflow-x-auto rounded-2xl border border-white/10 glass-dark">
           <table class="w-full text-left border-collapse">
@@ -203,7 +219,7 @@ const rewardBreakdown = [
           </table>
         </div>
         <p class="mt-6 text-center text-white/50 text-sm">
-          * Rewards are paid out after the student has successfully enrolled and passed the first week of the bootcamp.
+          * Rewards are calculated based on the final enrollment amount and paid out 21 days after the program begins.
         </p>
       </div>
 
@@ -257,7 +273,7 @@ const rewardBreakdown = [
         <div class="relative animate-on-scroll-right">
           <div class="absolute -inset-4 bg-linear-to-br from-gold-500/20 to-navy-500/10 rounded-3xl blur-2xl"></div>
           <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-navy-100/50 aspect-video bg-navy-900">
-            <img src="/videos/student-showcase/ai-agent.gif" alt="Adullam Academy student showcasing an AI agent project" class="w-full h-full object-cover" />
+            <img src="/videos/student-showcase/ai-agent.gif" loading="lazy" decoding="async" width="800" height="450" alt="Adullam Academy student showcasing an AI agent project" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -273,4 +289,19 @@ const rewardBreakdown = [
     secondaryCTA="Back to Home"
     secondaryLink="/"
   />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Kingdom Partner Program | Adullam Academy",
+    "description": "Join the Adullam Academy affiliate program. Refer students to our Innovation Bootcamp and earn a 5% commission.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Adullam Academy",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://adullamacademy.com/logos/logo.png"
+      }
+    }
+  })} />
 </BaseLayout>
