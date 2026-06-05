@@ -209,5 +209,55 @@ const ogImageURL = new URL(image, Astro.site || "https://adullamacademy.com");
         });
       }
     </script>
+
+    <!-- Referral Tracking & Affiliate Management -->
+    <script is:inline define:vars={{ REGISTER_LINK }}>
+      /**
+       * Captures ?referral=ID on the home page, saves it to a cookie for 30 days,
+       * and appends it to all registration links across the site.
+       */
+      function initReferralTracking() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralId = urlParams.get('referral');
+
+        // 1. Capture & Store 
+        if (referralId) {
+          // Set cookie for 30 days
+          const expires = new Date();
+          expires.setTime(expires.getTime() + (30 * 24 * 60 * 60 * 1000));
+          document.cookie = `referral=${referralId};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+
+          // 2. Clean URL: Remove referral param from address bar
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.delete('referral');
+          window.history.replaceState({}, document.title, newUrl.pathname + newUrl.search);
+        }
+
+        // 3. Apply: Read cookie and decorate registration links
+        const savedReferral = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('referral='))
+          ?.split('=')[1];
+
+        if (savedReferral) {
+          // Find all links starting with the registration base URL
+          const regLinks = document.querySelectorAll(`a[href^="${REGISTER_LINK}"]`);
+          
+          regLinks.forEach(link => {
+            try {
+              const url = new URL(link.href);
+              url.searchParams.set('referral', savedReferral);
+              link.href = url.toString();
+            } catch (e) {
+              // Fallback for invalid URLs or unexpected relative paths
+              console.error('Error updating referral link:', e);
+            }
+          });
+        }
+      }
+
+      // Initialize on load and after every Astro page transition
+      document.addEventListener('astro:page-load', initReferralTracking);
+    </script>
   </body>
 </html>
