@@ -27,10 +27,9 @@ interface Props {
 }
 
 const defaultStats: Stat[] = [
-  { value: 3, label: "Bootcamps Yearly" },
-  { value: 8, label: "Weeks per Bootcamp" },
+  { value: 0, label: "Workshop Fee", prefix: "$" },
   { value: 8, label: "Min Age", prefix: "" },
-  { value: 18, label: "Max Age", prefix: "" },
+  { value: 16, label: "Max Age", prefix: "" },
 ];
 
 const { stats = defaultStats } = Astro.props;

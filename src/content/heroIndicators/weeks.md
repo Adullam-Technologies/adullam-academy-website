@@ -1,6 +1,6 @@
 ---
-value: "8"
-label: "Weeks"
+value: "Create"
+label: "Hands-On Learning"
 order: 2
 published: true
 ---

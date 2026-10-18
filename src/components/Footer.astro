@@ -42,10 +42,10 @@ const socialLinks = [
 // Quick links configuration
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/bootcamp", label: "Program" },
+  { href: "/workshops", label: "Workshops" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/careers", label: "Careers" },
+  { href: "/bootcamp", label: "Cohorts" },
   { href: "/affiliate", label: "Partners" },
 ];
 
@@ -117,10 +117,12 @@ const currentYear = new Date().getFullYear();
             <li>
               <a
                 href={REGISTER_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-gold-500 hover:text-gold-400 hover:pl-2 transition-all duration-300 inline-block font-medium"
-                aria-label="Register now for the next cohort"
+                aria-label="See upcoming workshops on Luma"
               >
-                Register
+                Luma Calendar ↗
               </a>
             </li>
           </ul>
@@ -207,8 +209,8 @@ const currentYear = new Date().getFullYear();
           <p class="text-white/90 mb-4 text-sm">
             Ready to equip your child for the future?
           </p>
-          <a href={REGISTER_LINK} class="btn-primary w-full text-center block" aria-label="Enrol your child in Adullam Academy">
-            Enrol Now
+          <a href={REGISTER_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center block" aria-label="Explore free workshops on Luma">
+            Free Workshops ↗
           </a>
         </div>
       </div>

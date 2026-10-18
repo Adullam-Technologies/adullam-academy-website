@@ -59,7 +59,7 @@ const ogImageURL = new URL(image, Astro.site || "https://adullamacademy.com");
     <!-- SEO Meta -->
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Adullam Academy, Christian coding bootcamp, AI engineering for kids, Kingdom-first leadership, Christian innovation school, Christian tech education" />
+    <meta name="keywords" content="Adullam Academy, free technology workshops for kids, AI engineering for kids, Kingdom-first leadership, Christian innovation school, Christian tech education" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Favicon -->
@@ -119,17 +119,15 @@ const ogImageURL = new URL(image, Astro.site || "https://adullamacademy.com");
       Skip to main content
     </a>
 
-    <!-- Announcement Bar (disabled)
     {
       showAnnouncement && (
         <AnnouncementBar
-          message="Registration is open for the Jun 20 – Aug 16 online cohort"
+          message="Free technology workshops for ages 8–16"
           link={REGISTER_LINK}
-          linkText="Save My Spot"
+          linkText="Explore Workshops ↗"
         />
       )
     }
-    -->
 
     <!-- Header -->
     <Header />

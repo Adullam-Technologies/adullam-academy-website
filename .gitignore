@@ -24,3 +24,8 @@ pnpm-debug.log*
 .idea/
 
 opencode.json
+
+# Local ceremony sources; only the showcase images belong in the website.
+local-media/
+public/images/projects/awards-night-aug-2026/*.mp4
+public/images/projects/awards-night-aug-2026/*.pdf

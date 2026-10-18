@@ -17,9 +17,9 @@ import { REGISTER_LINK } from '../data/links';
 
 // Navigation links configuration
 const navLinks = [
-  { href: "/bootcamp", label: "Program" },
+  { href: "/bootcamp", label: "Cohorts" },
+  { href: "/#student-work", label: "Student Work" },
   { href: "/about", label: "About" },
-  { href: "/about#faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
             class="h-10 w-auto"
           />
         </div>
-        <span class="text-xl font-bold text-white hidden sm:block">
+        <span class="text-base sm:text-xl font-bold text-white">
           Adullam Academy
         </span>
       </a>
@@ -78,10 +78,12 @@ const currentPath = Astro.url.pathname;
         </a> -->
         <a 
           href={REGISTER_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
           class="btn-primary"
-          aria-label="Register for the Adullam Academy Innovation Bootcamp"
+          aria-label="Explore free workshops on Luma"
         >
-          Register
+          Free Workshops ↗
         </a>
       </div>
 
@@ -91,6 +93,7 @@ const currentPath = Astro.url.pathname;
         class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
         aria-label="Toggle menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -131,9 +134,11 @@ const currentPath = Astro.url.pathname;
           </a> -->
           <a 
             href={REGISTER_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn-primary block text-center w-full"
           >
-            Register
+            Free Workshops ↗
           </a>
         </div>
       </div>
@@ -155,27 +160,28 @@ const currentPath = Astro.url.pathname;
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
 
+    if (!mobileMenuBtn || mobileMenuBtn.dataset.initialized) return;
+    mobileMenuBtn.dataset.initialized = 'true';
+
     let isMenuOpen = false;
 
-    // Toggle mobile menu
-    mobileMenuBtn?.addEventListener('click', () => {
-      isMenuOpen = !isMenuOpen;
-      
-      if (isMenuOpen) {
-        mobileMenu?.classList.remove('hidden');
-        // Trigger reflow for animation
-        mobileMenu?.offsetHeight;
-        mobileMenu?.classList.add('max-h-96');
-      } else {
-        mobileMenu?.classList.remove('max-h-96');
-        setTimeout(() => {
-          mobileMenu?.classList.add('hidden');
-        }, 300);
-      }
+    function setMenuOpen(open: boolean) {
+      isMenuOpen = open;
+      mobileMenu?.classList.toggle('hidden', !open);
+      menuIcon?.classList.toggle('hidden', open);
+      closeIcon?.classList.toggle('hidden', !open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+    }
 
-      menuIcon?.classList.toggle('hidden', isMenuOpen);
-      closeIcon?.classList.toggle('hidden', !isMenuOpen);
-      mobileMenuBtn?.setAttribute('aria-expanded', String(isMenuOpen));
+    mobileMenuBtn.addEventListener('click', () => setMenuOpen(!isMenuOpen));
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+    document.getElementById('main-header')?.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        setMenuOpen(false);
+        mobileMenuBtn.focus();
+      }
     });
   }
 

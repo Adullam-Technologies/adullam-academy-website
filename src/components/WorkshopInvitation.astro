@@ -1,0 +1,25 @@
+---
+import { WORKSHOPS_LINK } from "../data/links";
+const topics = ["Game development", "AI & web design", "Robotics", "Creative design", "Data & technology"];
+---
+
+<section id="workshops" class="bg-white py-20 lg:py-24 scroll-mt-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600 mb-4">Happening now at the Academy</p>
+      <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">Discover what's possible.<br />Join a free workshop.</h2>
+      <p class="mt-6 text-navy-600 text-lg leading-relaxed max-w-xl">A space for curious minds aged 8–16 to discover technology and bring God-inspired ideas to life. Our workshop series is already underway, with new sessions added regularly.</p>
+      <p class="mt-6 text-sm font-semibold text-navy-700">Explore topics including</p>
+      <ul class="flex flex-wrap gap-2 mt-3">{topics.map(topic => <li class="text-sm rounded-full border border-navy-900/15 px-4 py-2 text-navy-700">{topic}</li>)}<li class="text-sm px-2 py-2 text-navy-600">and more.</li></ul>
+    </div>
+    <div class="bg-cream rounded-2xl border border-navy-900/10 p-8 lg:p-10 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-28 h-28 rounded-bl-full bg-gold-200/50" aria-hidden="true"></div>
+      <p class="relative text-xs font-bold uppercase tracking-widest text-navy-600 mb-8">Your invitation to create</p>
+      <dl class="relative grid grid-cols-2 gap-6 border-b border-navy-900/15 pb-7 mb-7"><div><dt class="text-sm text-navy-600 mb-2">Cost</dt><dd class="text-4xl font-bold">Free</dd></div><div><dt class="text-sm text-navy-600 mb-2">Ages</dt><dd class="text-4xl font-bold">8–16</dd></div></dl>
+      <h3 class="text-xl font-bold">Find your next workshop.</h3>
+      <p class="text-navy-600 leading-relaxed mt-3 mb-6">Visit our Luma calendar for current topics, dates, session details, and registration.</p>
+      <a href={WORKSHOPS_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center">See Upcoming Workshops <span aria-hidden="true">↗</span></a>
+      <p class="text-xs text-navy-600 text-center mt-4">View the latest schedule on Luma</p>
+    </div>
+  </div>
+</section>
