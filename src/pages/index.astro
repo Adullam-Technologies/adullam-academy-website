@@ -80,7 +80,7 @@ const approach = [
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">Empowering the Next Generation of <span class="text-gold-300">Kingdom Visionaries.</span></h1>
         <p class="mt-7 mx-auto max-w-2xl text-lg leading-relaxed text-white/75">Adullam Academy is a Kingdom-first preparation ground where your child learns to build apps, create AI-powered solutions, and bring God-inspired ideas to life.</p>
         <div class="mt-9 flex flex-wrap justify-center gap-5 items-center">
-          <a href={WORKSHOPS_LINK} class="btn-primary">Explore Free Workshops <span aria-hidden="true">↗</span></a>
+          <a href={WORKSHOPS_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary">Explore Free Workshops <span aria-hidden="true">↗</span></a>
           <a href="#student-work" class="text-sm font-semibold text-white border-b border-white/40 pb-1 hover:border-gold-300 hover:text-gold-300">See what students create <span aria-hidden="true">↓</span></a>
         </div>
         <p class="mt-7 text-sm text-white/60">Happening now: free workshops for ages 8–16.</p>
@@ -119,6 +119,7 @@ const approach = [
     </div>
   </section>
 
+  {/* Awards celebration temporarily hidden; the cohort page links to the recording.
   <section id="awards" class="bg-navy-900 text-white py-20 lg:py-28 relative overflow-hidden scroll-mt-24">
     <div class="absolute inset-0 bg-linear-to-tr from-navy-950 via-transparent to-navy-700/30" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -147,6 +148,8 @@ const approach = [
     </div>
   </section>
 
+  */}
+
   <section class="py-20 lg:py-28 bg-cream">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600 mb-4">The Adullam foundation</p>
@@ -169,6 +172,6 @@ const approach = [
     <div class="mx-auto max-w-5xl px-6 lg:px-8"><p class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600 text-center mb-4">From our families</p><h2 class="text-3xl lg:text-4xl font-extrabold text-center mb-12">Growth parents can see.</h2><TestimonialCarousel testimonials={testimonials} /></div>
   </section>
   <section class="bg-gold-200 py-16 lg:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row gap-8 justify-between items-start lg:items-center"><div><p class="text-xs font-bold uppercase tracking-[0.2em] mb-4">Their next idea starts here</p><h2 class="text-3xl lg:text-4xl font-extrabold">Make room for their potential.</h2><p class="mt-4 text-navy-700">Discover the Academy through our current free workshops for ages 8–16.</p><a href="/bootcamp" class="inline-block mt-4 font-semibold underline underline-offset-4">Looking ahead to future cohorts? →</a></div><a href={WORKSHOPS_LINK} class="btn-primary">See Upcoming Workshops <span aria-hidden="true">↗</span></a></div>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row gap-8 justify-between items-start lg:items-center"><div><p class="text-xs font-bold uppercase tracking-[0.2em] mb-4">Their next idea starts here</p><h2 class="text-3xl lg:text-4xl font-extrabold">Make room for their potential.</h2><p class="mt-4 text-navy-700">Discover the Academy through our current free workshops for ages 8–16.</p><a href="/bootcamp" class="inline-block mt-4 font-semibold underline underline-offset-4">Looking ahead to future cohorts? →</a></div><a href={WORKSHOPS_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary">See Upcoming Workshops <span aria-hidden="true">↗</span></a></div>
   </section>
 </BaseLayout>

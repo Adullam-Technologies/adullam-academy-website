@@ -48,6 +48,8 @@ const {
     {link && (
       <a 
         href={link}
+        target={link === REGISTER_LINK ? "_blank" : undefined}
+        rel={link === REGISTER_LINK ? "noopener noreferrer" : undefined}
         class="inline-flex items-center gap-1 bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-bold hover:bg-navy-800 transition-colors duration-300"
       >
         {linkText}

@@ -1,5 +1,5 @@
 ---
-name: "Mohamed's parent"
+name: "Mohamed's mum"
 role: "Parent"
 order: 0
 featured: true

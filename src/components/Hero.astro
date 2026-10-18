@@ -150,6 +150,8 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
       >
         <a 
           href={primaryLink}
+          target={primaryLink === REGISTER_LINK ? "_blank" : undefined}
+          rel={primaryLink === REGISTER_LINK ? "noopener noreferrer" : undefined}
           class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
           aria-label={`Register for ${headline}`}
         >
@@ -160,6 +162,8 @@ const sortedHeroIndicators = heroIndicators.sort((a, b) => (a.data.order || 99) 
         </a>
         <a 
           href={secondaryLink}
+          target={secondaryLink === REGISTER_LINK ? "_blank" : undefined}
+          rel={secondaryLink === REGISTER_LINK ? "noopener noreferrer" : undefined}
           class="btn-secondary text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
           aria-label="Learn more about our workshops"
         >

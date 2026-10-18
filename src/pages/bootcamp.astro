@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { WORKSHOPS_LINK } from "../data/links";
+import { AWARDS_VIDEO_LINK, COHORT_UPDATES_LINK, WORKSHOPS_LINK } from "../data/links";
 ---
 
 <BaseLayout title="Cohorts | The School of Innovation" description="Cohort learning remains part of Adullam Academy's future. Discover our Kingdom-first School of Innovation and join our current free workshops for ages 8–16.">
@@ -13,8 +13,25 @@ import { WORKSHOPS_LINK } from "../data/links";
   </section>
   <section class="bg-cream py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20">
-      <div><p class="text-xs font-bold uppercase tracking-widest text-navy-600 mb-4">The journey continues</p><h2 class="text-3xl lg:text-4xl font-extrabold">More cohorts ahead.</h2><p class="text-navy-600 text-lg leading-relaxed mt-6">Cohorts remain part of the Academy's future. Right now, we're inviting families to explore through our free workshops for ages 8–16.</p><p class="text-navy-600 leading-relaxed mt-4">Details for future cohorts will be shared when available. In the meantime, find current workshop dates and registration on our Luma calendar.</p><a href={WORKSHOPS_LINK} class="btn-primary mt-8">Explore Current Workshops ↗</a></div>
-      <div class="rounded-2xl bg-white border border-navy-900/10 p-8 lg:p-10"><h2 class="text-2xl font-bold">See the growth in action.</h2><p class="text-navy-600 leading-relaxed mt-5">Our August 2026 Presentation &amp; Awards Night celebrated student-created films and working AI agents, with feedback from guest judges across investment, education, and leadership.</p><a href="/#awards" class="inline-block mt-7 font-semibold underline underline-offset-4">Celebrate our students' work →</a><div class="border-t border-navy-900/10 mt-8 pt-7"><h3 class="text-lg font-bold">Questions about future cohorts?</h3><a href="/contact" class="inline-block mt-3 text-navy-600 underline underline-offset-4">Get in touch with our team</a></div></div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-navy-600 mb-4">The journey continues</p>
+        <h2 class="text-3xl lg:text-4xl font-extrabold">More cohorts ahead.</h2>
+        <p class="text-navy-600 text-lg leading-relaxed mt-6">Cohorts remain part of the Academy's future. Register for updates to hear about upcoming cohorts and enrolment opportunities.</p>
+        <p class="text-navy-600 leading-relaxed mt-4">In the meantime, your child can explore through our free workshops for ages 8–16. Find current dates and session details on our Luma calendar.</p>
+        <div class="mt-8 flex flex-col items-start gap-5">
+          <a href={COHORT_UPDATES_LINK} class="btn-primary">Get Cohort Updates <span aria-hidden="true">↗</span></a>
+          <a href={WORKSHOPS_LINK} target="_blank" rel="noopener noreferrer" class="inline-block font-semibold underline underline-offset-4">Explore Current Workshops ↗</a>
+        </div>
+      </div>
+      <div class="rounded-2xl bg-white border border-navy-900/10 p-8 lg:p-10">
+        <h2 class="text-2xl font-bold">See the growth in action.</h2>
+        <p class="text-navy-600 leading-relaxed mt-5">Our August 2026 Presentation &amp; Awards Night celebrated student-created films and working AI agents, with feedback from guest judges across investment, education, and leadership.</p>
+        <a href={AWARDS_VIDEO_LINK} target="_blank" rel="noopener noreferrer" class="inline-block mt-7 font-semibold underline underline-offset-4">Celebrate our students' work ↗</a>
+        <div class="border-t border-navy-900/10 mt-8 pt-7">
+          <h3 class="text-lg font-bold">Questions about future cohorts?</h3>
+          <a href="/contact" class="inline-block mt-3 text-navy-600 underline underline-offset-4">Get in touch with our team</a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
