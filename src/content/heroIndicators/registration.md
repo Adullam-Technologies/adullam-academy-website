@@ -1,6 +1,6 @@
 ---
-value: "$300"
-label: "Registration"
+value: "Free"
+label: "Workshops"
 order: 4
-published: false
+published: true
 ---

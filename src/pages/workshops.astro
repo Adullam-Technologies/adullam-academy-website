@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WorkshopInvitation from "../components/WorkshopInvitation.astro";
+---
+
+<BaseLayout title="Free Workshops for Young Creators" description="Explore free technology workshops for ages 8–16 at Adullam Academy. See current topics, dates, and registration on our Luma calendar.">
+  <section class="bg-linear-to-br from-navy-800 to-navy-950 text-white py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8"><p class="text-gold-300 text-xs uppercase tracking-[0.2em] font-bold mb-5">Adullam Academy workshops</p><h1 class="text-4xl lg:text-6xl font-extrabold max-w-3xl leading-tight">Curiosity is the beginning.<br /><span class="text-gold-300">Let's build on it.</span></h1><p class="text-white/75 text-lg max-w-2xl mt-6">Hands-on technology. Kingdom-first purpose. New opportunities for your child to discover what they can create.</p></div>
+  </section>
+  <WorkshopInvitation />
+  <section class="bg-cream py-14"><div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-wrap justify-between gap-6"><div><h2 class="text-2xl font-bold">Wondering what learning here can lead to?</h2><p class="text-navy-600 mt-3">Discover the films and AI agents our students have already created.</p></div><a href="/#student-work" class="btn-outline-gold self-center">Explore Student Work</a></div></section>
+</BaseLayout>
