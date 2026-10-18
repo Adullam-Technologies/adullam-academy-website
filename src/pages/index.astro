@@ -8,6 +8,62 @@ import { WORKSHOPS_LINK } from "../data/links";
 const testimonials = (await getCollection("testimonials", ({ data }) => data.published))
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 const awardsPath = "/images/projects/awards-night-aug-2026";
+const studentProjects = [
+  {
+    title: "Stickman Oceanic Odyssey",
+    category: "AI filmmaking",
+    description: "An ocean adventure brought to life through original characters, imaginative artwork, and AI filmmaking.",
+    image: `${awardsPath}/abimbolas-ai-video.jpeg`,
+    alt: "Student-created ocean adventure artwork featuring colourful stick-figure sea creatures",
+    width: 1152,
+    height: 648,
+  },
+  {
+    title: "Front Row Faith",
+    category: "AI filmmaking",
+    description: "From character ideas to scenes and a finished edit: a student-created film exploring the possibilities of AI storytelling.",
+    image: `${awardsPath}/myla-ai-video.jpeg`,
+    alt: "A scene from the student AI film Front Row Faith shown during the presentation",
+    width: 1279,
+    height: 516,
+  },
+  {
+    title: "A personal music assistant",
+    category: "AI engineering · Team Chicken Inventors",
+    description: "An AI agent that helps people discover music, learn about artists, and write songs. Built around a shared love of music.",
+    image: `${awardsPath}/team-chicken-inventors-ai-agent.jpeg`,
+    alt: "Team Chicken Inventors' music assistant generating a song concept and inviting the user to write lyrics",
+    width: 1280,
+    height: 641,
+  },
+  {
+    title: "Run David Run!",
+    category: "2D adventure game",
+    description: "A student-built 2D adventure, turning an idea into a playable game.",
+    image: "/images/projects/run-david-run.gif",
+    alt: "Run David Run 2D game demo built by an Adullam Academy student",
+    width: 800,
+    height: 450,
+  },
+  {
+    title: "Bible Bop",
+    category: "Trivia game",
+    description: "A student-created Bible trivia game bringing faith and interactive play together.",
+    image: "/videos/student-showcase/biblebop.gif",
+    alt: "Bible Bop trivia game demo built by an Adullam Academy student",
+    width: 800,
+    height: 450,
+  },
+  {
+    title: "Eseosa's Agent",
+    category: "AI research agent",
+    description: "A student-built AI research agent demonstrating practical skills in AI development.",
+    image: "/videos/student-showcase/ai-agent.gif",
+    alt: "Eseosa's AI research agent demo built by an Adullam Academy student",
+    width: 800,
+    height: 450,
+  },
+];
 const approach = [
   { title: "Kingdom first. Always.", text: "Our foundation is Jesus Christ. We help young Visionaries connect their creativity with God's Word and His purpose for their lives." },
   { title: "Create, don't just consume.", text: "Ideas become something you can see, share, and improve. Students explore technology by making things with it." },
@@ -18,29 +74,16 @@ const approach = [
 <BaseLayout title="The School of Innovation" description="Adullam Academy is a Christian School of Innovation raising Kingdom-first leaders. Explore student creations and our current free workshops for ages 8–16." showAnnouncement={false}>
   <section class="relative overflow-hidden bg-navy-900 text-white">
     <div class="absolute inset-0 bg-linear-to-br from-navy-800 via-navy-900 to-navy-950" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-20 lg:py-24 grid lg:grid-cols-[1.05fr_1fr] gap-14 lg:gap-16 items-center">
+    <div class="relative mx-auto max-w-5xl px-6 lg:px-8 py-20 lg:py-28 text-center">
       <div>
         <p class="text-gold-400 text-xs font-bold uppercase tracking-[0.22em] mb-7">The School of Innovation</p>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">Empowering the Next Generation of <span class="text-gold-300">Kingdom Visionaries.</span></h1>
-        <p class="mt-7 max-w-lg text-lg leading-relaxed text-white/75">Adullam Academy is a Kingdom-first preparation ground where your child learns to build apps, create AI-powered solutions, and bring God-inspired ideas to life.</p>
-        <div class="mt-9 flex flex-wrap gap-5 items-center">
+        <p class="mt-7 mx-auto max-w-2xl text-lg leading-relaxed text-white/75">Adullam Academy is a Kingdom-first preparation ground where your child learns to build apps, create AI-powered solutions, and bring God-inspired ideas to life.</p>
+        <div class="mt-9 flex flex-wrap justify-center gap-5 items-center">
           <a href={WORKSHOPS_LINK} class="btn-primary">Explore Free Workshops <span aria-hidden="true">↗</span></a>
           <a href="#student-work" class="text-sm font-semibold text-white border-b border-white/40 pb-1 hover:border-gold-300 hover:text-gold-300">See what students create <span aria-hidden="true">↓</span></a>
         </div>
         <p class="mt-7 text-sm text-white/60">Happening now: free workshops for ages 8–16.</p>
-      </div>
-      <div class="relative">
-        <div class="flex items-center justify-between text-xs tracking-widest uppercase mb-4 text-white/60"><span>The student studio</span><span class="text-gold-300">Made at Adullam</span></div>
-        <figure class="overflow-hidden rounded-t-[2rem] rounded-br-[2rem] border border-white/15 bg-navy-800 shadow-2xl">
-          <img src={`${awardsPath}/abimbolas-ai-video.jpeg`} alt="Student-created ocean adventure artwork featuring colourful stick-figure sea creatures" width="1152" height="648" fetchpriority="high" class="w-full aspect-video object-cover" />
-          <figcaption class="px-6 py-5 flex justify-between items-center gap-4">
-            <div><span class="text-gold-300 text-[10px] font-bold uppercase tracking-widest">Student filmmaking</span><p class="font-bold mt-1">An imagination brought to life.</p></div>
-            <span class="text-3xl text-gold-300" aria-hidden="true">✦</span>
-          </figcaption>
-        </figure>
-        <div class="mt-5 ml-auto max-w-sm flex gap-4 items-center border-l-2 border-gold-500 pl-5">
-          <span class="text-3xl text-gold-300 font-heading font-bold">01</span><p class="text-sm text-white/70 leading-relaxed">One idea can be the beginning of something extraordinary.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -51,17 +94,27 @@ const approach = [
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid md:grid-cols-[1.2fr_1fr] gap-6 items-end mb-12">
         <div><p class="text-navy-600 text-xs font-bold uppercase tracking-[0.2em] mb-4">The work speaks</p><h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">Young minds.<br />Remarkable creations.</h2></div>
-        <p class="text-navy-600 leading-relaxed max-w-md md:ml-auto">Original films. Working AI agents. Ideas with personality and purpose. A glimpse into the work presented at our August 2026 Presentation &amp; Awards Night.</p>
+        <p class="text-navy-600 leading-relaxed max-w-md md:ml-auto">Games, original films, and working AI agents. Explore creations from across the Academy, including our August 2026 Presentation &amp; Awards Night.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <article class="rounded-2xl overflow-hidden bg-white border border-navy-900/10">
-          <img src={`${awardsPath}/myla-ai-video.jpeg`} alt="A scene from the student AI film Front Row Faith shown during the presentation" width="1279" height="516" loading="lazy" decoding="async" class="w-full aspect-video object-cover" />
-          <div class="p-7"><p class="text-xs uppercase tracking-widest text-navy-600 mb-3">AI filmmaking</p><h3 class="text-2xl font-bold mb-3">Front Row Faith</h3><p class="text-navy-600 leading-relaxed">From character ideas to scenes and a finished edit: a student-created film exploring the possibilities of AI storytelling.</p></div>
-        </article>
-        <article class="rounded-2xl overflow-hidden bg-white border border-navy-900/10">
-          <img src={`${awardsPath}/team-chicken-inventors-ai-agent.jpeg`} alt="Team Chicken Inventors' music assistant generating a song concept and inviting the user to write lyrics" width="1280" height="641" loading="lazy" decoding="async" class="w-full aspect-video object-cover" />
-          <div class="p-7"><p class="text-xs uppercase tracking-widest text-navy-600 mb-3">AI engineering · Team Chicken Inventors</p><h3 class="text-2xl font-bold mb-3">A personal music assistant</h3><p class="text-navy-600 leading-relaxed">An AI agent that helps people discover music, learn about artists, and write songs. Built around a shared love of music.</p></div>
-        </article>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {studentProjects.map((project) => (
+          <article class="rounded-2xl overflow-hidden bg-white border border-navy-900/10">
+            <img
+              src={project.image}
+              alt={project.alt}
+              width={project.width}
+              height={project.height}
+              loading="lazy"
+              decoding="async"
+              class="w-full aspect-video object-cover"
+            />
+            <div class="p-7">
+              <p class="text-xs uppercase tracking-widest text-navy-600 mb-3">{project.category}</p>
+              <h3 class="text-2xl font-bold mb-3">{project.title}</h3>
+              <p class="text-navy-600 leading-relaxed">{project.description}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
