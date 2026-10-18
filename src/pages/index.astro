@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
 import TestimonialCarousel from "../components/TestimonialCarousel.astro";
 import WorkshopInvitation from "../components/WorkshopInvitation.astro";
 import { WORKSHOPS_LINK } from "../data/links";
@@ -171,7 +172,12 @@ const approach = [
   <section class="bg-cream-dark py-20 lg:py-24">
     <div class="mx-auto max-w-5xl px-6 lg:px-8"><p class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600 text-center mb-4">From our families</p><h2 class="text-3xl lg:text-4xl font-extrabold text-center mb-12">Growth parents can see.</h2><TestimonialCarousel testimonials={testimonials} /></div>
   </section>
-  <section class="bg-gold-200 py-16 lg:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row gap-8 justify-between items-start lg:items-center"><div><p class="text-xs font-bold uppercase tracking-[0.2em] mb-4">Their next idea starts here</p><h2 class="text-3xl lg:text-4xl font-extrabold">Make room for their potential.</h2><p class="mt-4 text-navy-700">Discover the Academy through our current free workshops for ages 8–16.</p><a href="/bootcamp" class="inline-block mt-4 font-semibold underline underline-offset-4">Looking ahead to future cohorts? →</a></div><a href={WORKSHOPS_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary">See Upcoming Workshops <span aria-hidden="true">↗</span></a></div>
-  </section>
+  <CTA
+    headline="God Is Raising An Army of Giants"
+    subtext="Adullam Academy is a Kingdom-first preparation ground for exploits in Christ."
+    primaryCTA="Explore Free Workshops"
+    primaryLink={WORKSHOPS_LINK}
+    secondaryCTA="Explore Future Cohorts"
+    secondaryLink="/bootcamp"
+  />
 </BaseLayout>
